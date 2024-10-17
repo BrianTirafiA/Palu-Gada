@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace PaluGada
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ConfirmEmail.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ConfirmEmail : Page
     {
-        public MainWindow()
+        public ConfirmEmail()
         {
             InitializeComponent();
-            LoginFrame.Navigate(new Login());
         }
-
     }
 }

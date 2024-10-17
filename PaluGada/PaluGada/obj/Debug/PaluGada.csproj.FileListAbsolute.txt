@@ -15,3 +15,7 @@ D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\PaluGada.exe
 D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\PaluGada.pdb
 D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\SignUp.g.cs
 D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\SignUp.baml
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\Login.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\Login.baml
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\ConfirmEmail.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\ConfirmEmail.baml

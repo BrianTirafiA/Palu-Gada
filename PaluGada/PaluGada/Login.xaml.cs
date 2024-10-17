@@ -16,28 +16,27 @@ using System.Windows.Shapes;
 namespace PaluGada
 {
     /// <summary>
-    /// Interaction logic for SignUp.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class SignUp : Page
+    public partial class Login : Page
     {
-        public SignUp()
+        public Login()
         {
             InitializeComponent();
         }
 
-        private void lbl_Clickable_Login(object sender, MouseButtonEventArgs e)
+        private void lbl_Clickable_SignUp(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("Label clicked!");
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.LoginFrame.Navigate(new Login());
-        }
+            //LoginFrame.Navigate(new SignUp());
 
-        private void SignUpButton_Click(object sender, RoutedEventArgs e)
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.LoginFrame.Navigate(new SignUp());
+        }
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigate to SecondPage
-            MessageBox.Show("Button clicked!");
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.LoginFrame.Navigate(new ConfirmEmail());
+            MessageBox.Show("Logged in!");
         }
     }
 }
