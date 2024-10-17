@@ -10,30 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PaluGada
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SignUp.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SignUp : Window
     {
-        public MainWindow()
+        public SignUp()
         {
             InitializeComponent();
         }
 
-        private void lbl_Clickable_SignUp(object sender, MouseButtonEventArgs e)
+        private void lbl_Clickable_Login(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("Label clicked!");
-        }
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Navigate to SecondPage
-            MessageBox.Show("Button clicked!");
-            MainFrame.Navigate(new SignUp());
         }
     }
 }
