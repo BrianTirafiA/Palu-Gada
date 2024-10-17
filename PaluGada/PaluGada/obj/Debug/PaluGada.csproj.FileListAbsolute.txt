@@ -1,0 +1,17 @@
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\PaluGada.csproj.AssemblyReference.cache
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\App.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\PaluGada_MarkupCompile.cache
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\bin\Debug\PaluGada.exe.config
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\bin\Debug\PaluGada.exe
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\bin\Debug\PaluGada.pdb
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\MainWindow.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\PaluGada_MarkupCompile.lref
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\MainWindow.baml
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\PaluGada.g.resources
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\PaluGada.Properties.Resources.resources
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\PaluGada.csproj.GenerateResource.cache
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\PaluGada.csproj.CoreCompileInputs.cache
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\PaluGada.exe
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\PaluGada.pdb
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\SignUp.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\SignUp.baml

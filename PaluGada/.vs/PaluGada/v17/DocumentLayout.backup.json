@@ -1,29 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\",
+  "WorkspaceRootPath": "C:\\Users\\Brian\\source\\repos\\PaluGada\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B77CB9D5-6771-445D-8B0C-FA2D51518364}|PaluGada\\PaluGada.csproj|c:\\users\\brian\\documents\\github\\palu-gada\\palugada\\palugada\\map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77CB9D5-6771-445D-8B0C-FA2D51518364}|PaluGada\\PaluGada.csproj|solutionrelative:palugada\\map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77CB9D5-6771-445D-8B0C-FA2D51518364}|PaluGada\\PaluGada.csproj|C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\palugada\\pin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77CB9D5-6771-445D-8B0C-FA2D51518364}|PaluGada\\PaluGada.csproj|solutionrelative:palugada\\pin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77CB9D5-6771-445D-8B0C-FA2D51518364}|PaluGada\\PaluGada.csproj|C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\palugada\\chatroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77CB9D5-6771-445D-8B0C-FA2D51518364}|PaluGada\\PaluGada.csproj|solutionrelative:palugada\\chatroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77CB9D5-6771-445D-8B0C-FA2D51518364}|PaluGada\\PaluGada.csproj|C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\palugada\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77CB9D5-6771-445D-8B0C-FA2D51518364}|PaluGada\\PaluGada.csproj|solutionrelative:palugada\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77CB9D5-6771-445D-8B0C-FA2D51518364}|PaluGada\\PaluGada.csproj|C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\palugada\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{B77CB9D5-6771-445D-8B0C-FA2D51518364}|PaluGada\\PaluGada.csproj|c:\\users\\brian\\source\\repos\\palugada\\palugada\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B77CB9D5-6771-445D-8B0C-FA2D51518364}|PaluGada\\PaluGada.csproj|solutionrelative:palugada\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77CB9D5-6771-445D-8B0C-FA2D51518364}|PaluGada\\PaluGada.csproj|C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\palugada\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B77CB9D5-6771-445D-8B0C-FA2D51518364}|PaluGada\\PaluGada.csproj|c:\\users\\brian\\source\\repos\\palugada\\palugada\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77CB9D5-6771-445D-8B0C-FA2D51518364}|PaluGada\\PaluGada.csproj|solutionrelative:palugada\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -39,75 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Map.cs",
-              "DocumentMoniker": "C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\Map.cs",
-              "RelativeDocumentMoniker": "PaluGada\\Map.cs",
-              "ToolTip": "C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\Map.cs",
-              "RelativeToolTip": "PaluGada\\Map.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T07:32:37.468Z",
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Brian\\source\\repos\\PaluGada\\PaluGada\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "PaluGada\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Brian\\source\\repos\\PaluGada\\PaluGada\\MainWindow.xaml",
+              "RelativeToolTip": "PaluGada\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-02T06:44:21.708Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Pin.cs",
-              "DocumentMoniker": "C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\Pin.cs",
-              "RelativeDocumentMoniker": "PaluGada\\Pin.cs",
-              "ToolTip": "C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\Pin.cs",
-              "RelativeToolTip": "PaluGada\\Pin.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T07:28:28.003Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Message.cs",
-              "DocumentMoniker": "C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\Message.cs",
-              "RelativeDocumentMoniker": "PaluGada\\Message.cs",
-              "ToolTip": "C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\Message.cs",
-              "RelativeToolTip": "PaluGada\\Message.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T07:11:40.757Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Chatroom.cs",
-              "DocumentMoniker": "C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\Chatroom.cs",
-              "RelativeDocumentMoniker": "PaluGada\\Chatroom.cs",
-              "ToolTip": "C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\Chatroom.cs",
-              "RelativeToolTip": "PaluGada\\Chatroom.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T06:57:51.915Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "PaluGada\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\MainWindow.xaml",
-              "RelativeToolTip": "PaluGada\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-02T06:44:21.708Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Brian\\source\\repos\\PaluGada\\PaluGada\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "PaluGada\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Brian\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Brian\\source\\repos\\PaluGada\\PaluGada\\MainWindow.xaml.cs",
               "RelativeToolTip": "PaluGada\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T06:44:21.04Z"
+              "WhenOpened": "2024-09-02T06:44:21.04Z",
+              "EditorCaption": ""
             }
           ]
         }
