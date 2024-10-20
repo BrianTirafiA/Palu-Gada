@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ConfirmEmail"
-          Background="#378C87">
+      Background="#378C87">
     <Grid>
         <Label x:Name="lbl_Confirmation" Content="E-mail Confirmation" FontSize="50" FontWeight="Bold" FontFamily="Montserrat" Margin="15,15,0,0" Foreground="#FFFFFF"/>
         <Label x:Name="lbl_Line" Content="___________________________________________________________" FontSize="50" FontFamily="Montserrat" Margin="15,30,0,0" Foreground="#FFFFFF"/>
@@ -27,7 +27,7 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <Button Content="Send Code" FontSize="20" FontWeight="Bold" FontFamily="Montserrat" Foreground="#FFFFFF" Background="#56A783" Margin="450,150,185,245">
+        <Button Content="Send Code" FontSize="20" FontWeight="Bold" FontFamily="Montserrat" Foreground="#FFFFFF" Background="#56A783" Margin="15,343,560,25">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" 
@@ -54,7 +54,7 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <Button Content="Confirm" FontSize="30" FontWeight="Bold" FontFamily="Montserrat" Foreground="#FFFFFF" Background="#56A783" Margin="15,343,560,25">
+        <Button Content="Confirm" FontSize="30" FontWeight="Bold" FontFamily="Montserrat" Foreground="#FFFFFF" Background="#56A783" Margin="275,343,300,25">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" 

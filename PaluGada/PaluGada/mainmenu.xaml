@@ -1,0 +1,29 @@
+﻿<Window x:Class="PaluGada.mainmenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PaluGada"
+        mc:Ignorable="d"
+        Title="mainmenu" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Background="#378C87">
+            <StackPanel>
+                <Button Content="Home" Margin="10" FontSize="30" FontWeight="Bold" Click="HomeButton_Click" Foreground="White" Background="#378C87"/>
+                <Button Content="Add Post" Margin="10" FontSize="30" FontWeight="Bold" Click="AddPostButton_Click" Foreground="White" Background="#378C87"/>
+                <Button Content="My Item" Margin="10" FontSize="30" FontWeight="Bold" Click="MyItemButton_Click" Foreground="White" Background="#378C87"/>
+                <Button Content="Wishlist" Margin="10" FontSize="30" FontWeight="Bold" Click="WishlistButton_Click" Foreground="White" Background="#378C87"/>
+                <Button Content="Chat" Margin="10" FontSize="30" FontWeight="Bold" Click="ChatButton_Click" Foreground="White" Background="#378C87"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Frame x:Name="MainMenuFrame" NavigationUIVisibility="Hidden"/>
+        </Grid>
+
+        </Grid>
+</Window>

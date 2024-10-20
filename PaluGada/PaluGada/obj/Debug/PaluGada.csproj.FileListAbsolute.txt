@@ -19,3 +19,15 @@ D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\Login.g.cs
 D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\Login.baml
 D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\ConfirmEmail.g.cs
 D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\ConfirmEmail.baml
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\AddPost.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\Chat.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\Home.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\mainmenu.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\MyItem.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\WishlistPage.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\AddPost.baml
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\Chat.baml
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\Home.baml
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\mainmenu.baml
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\MyItem.baml
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\WishlistPage.baml
