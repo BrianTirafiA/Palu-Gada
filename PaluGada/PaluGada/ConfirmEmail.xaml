@@ -54,7 +54,7 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <Button Content="Confirm" FontSize="30" FontWeight="Bold" FontFamily="Montserrat" Foreground="#FFFFFF" Background="#56A783" Margin="275,343,300,25">
+        <Button Content="Confirm" FontSize="30" FontWeight="Bold" FontFamily="Montserrat" Foreground="#FFFFFF" Background="#56A783" Margin="275,343,300,25" Click="ConfirmButton_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" 

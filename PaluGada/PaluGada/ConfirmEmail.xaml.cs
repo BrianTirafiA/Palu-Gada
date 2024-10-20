@@ -24,5 +24,16 @@ namespace PaluGada
         {
             InitializeComponent();
         }
+
+        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Signed in!");
+
+            mainmenu mainMenuWindow = new mainmenu();
+
+            mainMenuWindow.Show();
+
+            Application.Current.MainWindow.Close();
+        }
     }
 }

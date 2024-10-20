@@ -34,7 +34,6 @@ namespace PaluGada
 
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
-            // Navigate to SecondPage
             MessageBox.Show("Button clicked!");
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.LoginFrame.Navigate(new ConfirmEmail());

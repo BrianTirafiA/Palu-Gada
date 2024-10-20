@@ -28,23 +28,17 @@ namespace PaluGada
         private void lbl_Clickable_SignUp(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("Label clicked!");
-            //LoginFrame.Navigate(new SignUp());
-
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.LoginFrame.Navigate(new SignUp());
         }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            // Navigate to SecondPage
             MessageBox.Show("Logged in!");
 
-            // Membuat instance dari window MainMenu
             mainmenu mainMenuWindow = new mainmenu();
 
-            // Menampilkan window MainMenu
             mainMenuWindow.Show();
 
-            // Menutup window saat ini (window login)
             Application.Current.MainWindow.Close();
         }
     }
