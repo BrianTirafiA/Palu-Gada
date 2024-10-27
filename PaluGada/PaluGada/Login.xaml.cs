@@ -12,14 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Npgsql;
 
 namespace PaluGada
 {
-    /// <summary>
-    /// Interaction logic for Login.xaml
-    /// </summary>
+
     public partial class Login : Page
     {
+        private readonly string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=lhanif;Database=junpro";
+
         public Login()
         {
             InitializeComponent();
@@ -31,15 +32,62 @@ namespace PaluGada
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.LoginFrame.Navigate(new SignUp());
         }
+
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Logged in!");
+            string username = box_Username.Text.Trim();
+            string password = box_Password.Password;
 
-            mainmenu mainMenuWindow = new mainmenu();
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Username and password must not be empty.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
-            mainMenuWindow.Show();
+            if (AuthenticateUser(username, password))
+            {
+                MessageBox.Show("Login successful!");
 
-            Application.Current.MainWindow.Close();
+                // Open the main menu window after a successful login
+                mainmenu mainMenuWindow = new mainmenu();
+                mainMenuWindow.Show();
+
+                // Close the current window
+                Application.Current.MainWindow.Close();
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private bool AuthenticateUser(string username, string password)
+        {
+            try
+            {
+                using (var connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Query to check if the username and password match a record in the database
+                    string query = "SELECT COUNT(*) FROM AppUser WHERE username = @username AND password = @password";
+
+                    using (var command = new NpgsqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@username", username);
+                        command.Parameters.AddWithValue("@password", password);
+                        int userCount = Convert.ToInt32(command.ExecuteScalar());
+
+                        // If a matching record is found, return true (authentication successful)
+                        return userCount > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
         }
     }
 }
