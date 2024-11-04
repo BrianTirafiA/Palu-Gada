@@ -10,23 +10,25 @@
       Background="#FFFFFF">
 
     <Grid>
+        <Frame Name="HomeFrame" NavigationUIVisibility="Hidden"/>
         <Image HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Source="Images/map.png" Stretch="Fill"/>
-            <TextBox x:Name="box_Search" HorizontalAlignment="Left" Margin="75,20,0,0" VerticalAlignment="Top" Width="450" FontFamily="Montserrat" FontSize="30" Foreground="Gray">
-                <TextBox.Style>
-                    <Style TargetType="TextBox">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="TextBox">
-                                    <Border Background="White" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-                                        <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </TextBox.Style>
-            </TextBox>
-            
-        
+        <TextBox x:Name="box_Search" HorizontalAlignment="Left" Margin="75,20,0,0" VerticalAlignment="Top" Width="450" FontFamily="Montserrat" FontSize="30" Foreground="Gray">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border Background="White" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
+                                    <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <Image HorizontalAlignment="Left" Margin="435,202,0,0" VerticalAlignment="Top" Source="Images/pin.png" Stretch="Fill" Height="50" Width="50" MouseDown="PinDown"/>
+
+
     </Grid>
 </Page>

@@ -16,14 +16,25 @@ using System.Windows.Shapes;
 namespace PaluGada
 {
     /// <summary>
-    /// Interaction logic for MyItem.xaml
+    /// Interaction logic for ItemDetail.xaml
     /// </summary>
-    public partial class MyItem : Page
+    public partial class ItemDetail : Page
     {
-        public MyItem()
+        //users user1 = new users();
+        users user1 = new Owner();
+        public ItemDetail()
         {
             InitializeComponent();
         }
 
+        private void editItem()
+        {
+            user1.EditItem();
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            editItem();
+        }
     }
 }

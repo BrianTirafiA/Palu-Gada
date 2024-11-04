@@ -31,3 +31,5 @@ D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\Home.baml
 D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\mainmenu.baml
 D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\MyItem.baml
 D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\WishlistPage.baml
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\ItemDetail.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\ItemDetail.baml
