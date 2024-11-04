@@ -24,6 +24,15 @@ namespace PaluGada
         {
             InitializeComponent();
         }
+        private void PinDown(object sender, MouseButtonEventArgs e)
+        {
+            // Your click logic here
+            MessageBox.Show("Image clicked!");
+            NavigationService navService = NavigationService.GetNavigationService(this);
+            navService?.Navigate(new ItemDetail());
+        }
+
+
 
     }
 }
