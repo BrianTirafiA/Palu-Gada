@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PaluGada
@@ -23,8 +22,8 @@ namespace PaluGada
         public MainWindow()
         {
             InitializeComponent();
-            LoginFrame.Navigate(new Login());
-        }
+            LoginFrame.Navigate(new view.Login());
 
+        }
     }
 }

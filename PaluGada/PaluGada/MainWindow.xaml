@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PaluGada"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        WindowState="Maximized" 
+        Title="MainWindow" Height="1080" Width="1920"
         Background="#378C87">
     <Grid>
         <Frame x:Name="LoginFrame" NavigationUIVisibility="Hidden" />

@@ -1,0 +1,13 @@
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\PaluGada.csproj.AssemblyReference.cache
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\MainWindow.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\AddPost.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\Chat.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\ConfirmEmail.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\Home.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\Login.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\MainMenu.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\MyItem.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\SignUp.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\App.g.cs
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\PaluGada_MarkupCompile.cache
+D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\PaluGada_MarkupCompile.lref

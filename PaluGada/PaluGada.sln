@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.11.35219.272
+VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaluGada", "PaluGada\PaluGada.csproj", "{B77CB9D5-6771-445D-8B0C-FA2D51518364}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaluGada", "PaluGada\PaluGada.csproj", "{6B0DD034-6F53-4BFF-B87C-572B0889972B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B77CB9D5-6771-445D-8B0C-FA2D51518364}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B77CB9D5-6771-445D-8B0C-FA2D51518364}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B77CB9D5-6771-445D-8B0C-FA2D51518364}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B77CB9D5-6771-445D-8B0C-FA2D51518364}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B0DD034-6F53-4BFF-B87C-572B0889972B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B0DD034-6F53-4BFF-B87C-572B0889972B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B0DD034-6F53-4BFF-B87C-572B0889972B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B0DD034-6F53-4BFF-B87C-572B0889972B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {33E69491-C903-4FF2-A411-D99999C250AC}
+		SolutionGuid = {45B869E6-3DC8-49E3-8F94-37CD5FE7E117}
 	EndGlobalSection
 EndGlobal

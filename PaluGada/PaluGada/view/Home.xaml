@@ -1,0 +1,25 @@
+﻿<Page x:Class="PaluGada.view.Home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:wpf="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"      
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PaluGada.view"
+      mc:Ignorable="d"
+      Background="White"
+      Title="mainmenu" Height="1080" Width="1414">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <Viewbox HorizontalAlignment="Center" Grid.Row="0">
+            <Label Content="Home" FontSize="50" HorizontalAlignment="Center"/>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Center" Grid.Row="1">
+            <Border>
+                <wpf:GMapControl x:Name="MapControl" Width="1331" Height="868" Margin="0" BorderThickness="5"/>
+            </Border>
+        </Viewbox>
+    </Grid>
+</Page>

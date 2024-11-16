@@ -1,3 +1,40 @@
+# Build Folders
+/bin
+/obj
 
-PaluGada/.vs/PaluGada/FileContentIndex/af4adf28-60be-4b1c-acd6-497faa4dc50e.vsidx
-PaluGada/.vs/PaluGada/FileContentIndex/af4adf28-60be-4b1c-acd6-497faa4dc50e.vsidx
+# User-specific files
+*.user
+*.suo
+.vscode/
+.vs/
+
+# NuGet
+/packages
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+*.nuget.props
+*.nuget.targets
+
+# Debug and Log
+*.log
+*.vspscc
+*.vssscc
+
+# Temporary files and caches
+[Tt]humbs.db
+*.DS_Store
+*.tmp
+*.bak
+*.swp
+
+# Publish configuration
+*.Publish.xml
+
+# Local stored settings
+*.orig
+*.psess
+*.vsp
+*.vspx
+*.coverage
+*.cov
