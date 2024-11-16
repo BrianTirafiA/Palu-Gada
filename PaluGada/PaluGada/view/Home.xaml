@@ -9,18 +9,17 @@
       Background="White"
       Title="mainmenu" Height="1080" Width="1414">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="11*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Center" Width="1414" Grid.RowSpan="2" >
+        <Viewbox HorizontalAlignment="Center" Grid.Row="0">
             <Label Content="Home" FontSize="50" HorizontalAlignment="Center"/>
-
-            <wpf:GMapControl x:Name="MapControl" Width="1331" Height="868" Margin="0,20,0,0" BorderThickness="5"/>
-
-        </StackPanel>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Center" Grid.Row="1">
+            <Border>
+                <wpf:GMapControl x:Name="MapControl" Width="1331" Height="868" Margin="0" BorderThickness="5"/>
+            </Border>
+        </Viewbox>
     </Grid>
 </Page>

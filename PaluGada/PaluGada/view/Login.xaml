@@ -7,115 +7,112 @@
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="Login"
-      Background="#BEEBAD">
+          Background="#BEEBAD">
+
+    <Page.Resources>
+        <Style TargetType="TextBox" x:Key="RoundedTextBoxStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="LightGray" BorderBrush="Gray" BorderThickness="1" CornerRadius="30">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="PasswordBox" x:Key="RoundedPassBoxStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Background="#D9D9D9" BorderBrush="Gray" BorderThickness="1" CornerRadius="25" Padding="10,0,0,0">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="2" Opacity="0.5"/>
+                            </Border.Effect>
+                            <ScrollViewer x:Name="PART_ContentHost" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="RoundedButtonStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="10"
+                        Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="Padding" Value="10,5"/>
+        </Style>
+    </Page.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-        <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <!-- Title Label -->
-            <Label x:Name="lbl_Login" Content="LOGIN" FontSize="120" FontWeight="Bold" FontFamily="Montserrat" 
-                   Foreground="White" HorizontalAlignment="Center"
-                   Margin="0,0,0,100">
-                <Label.Effect>
-                    <DropShadowEffect Color="Black" BlurRadius="5" ShadowDepth="5" Opacity="1"/>
-                </Label.Effect>
-            </Label>
-
-            <!-- Background Rectangle for Form -->
-            <Border Background="#FFF1DB" CornerRadius="30" Padding="50" Width="500"
-                    Margin="0,0,0,0" Height="576">
-                <StackPanel HorizontalAlignment="Center">
-
-                    <!-- Username Label -->
-                    <Label x:Name="lbl_Username" Content="username" FontSize="20" FontWeight="Light" 
-                           FontFamily="Montserrat" Foreground="Black" HorizontalAlignment="Left" 
-                           Margin="0,55,0,0"/>
-
-                    <!-- Username TextBox -->
-                    <TextBox x:Name="box_Username" Width="400" Height="60" FontFamily="Montserrat" 
-                             FontSize="20" Foreground="Gray" HorizontalAlignment="Left" TextAlignment="Left">
-                        <TextBox.Style>
-                            <Style TargetType="TextBox">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="TextBox">
-                                            <Border Background="#D9D9D9" BorderBrush="Gray" BorderThickness="1" CornerRadius="25" Padding="10,0,0,0">
-                                                <Border.Effect>
-                                                    <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="2" Opacity="0.5"/>
-                                                </Border.Effect>
-                                                <ScrollViewer x:Name="PART_ContentHost" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </TextBox.Style>
-                    </TextBox>
-
-                    <!-- Password Label -->
-                    <Label x:Name="lbl_Password" Content="password" FontSize="20" FontWeight="Light" 
-                           FontFamily="Montserrat" Foreground="Black" HorizontalAlignment="Left"
-                           Margin="0,30,0,0"/>
-
-                    <!-- PasswordBox -->
-                    <PasswordBox x:Name="box_Password" Width="400" Height="60" FontFamily="Montserrat" 
-                                 FontSize="20" Foreground="Gray" HorizontalAlignment="Center">
-                        <PasswordBox.Style>
-                            <Style TargetType="PasswordBox">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="PasswordBox">
-                                            <Border Background="#D9D9D9" BorderBrush="Gray" BorderThickness="1" CornerRadius="25" Padding="10,0,0,0">
-                                                <Border.Effect>
-                                                    <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="2" Opacity="0.5"/>
-                                                </Border.Effect>
-                                                <ScrollViewer x:Name="PART_ContentHost" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </PasswordBox.Style>
-                    </PasswordBox>
-
-                    <!-- Login Button -->
-                    <Button Content="Login" FontSize="20" FontWeight="Bold" FontFamily="Montserrat" 
-                            Foreground="White" Background="#88C273" Width="200" Height="50"
-                            Margin="0,80,0,0" Click="LoginButton_Click">
-                        <Button.Template>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" BorderBrush="#D9D9D9" BorderThickness="3" CornerRadius="25" Padding="10,0,0,0">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-
-                    <!-- Label Create Account -->
-                    <Label x:Name="lbl_CreateAccount" Content="Create an Account" FontSize="20" FontWeight="Light" 
-                       FontFamily="Montserrat" Foreground="Black" HorizontalAlignment="Center"
-                       Margin="0,30,0,0" MouseDown="lbl_Clickable_SignUp"/>
-
-                </StackPanel>
-                <Border.Effect>
-                    <DropShadowEffect Color="Black" BlurRadius="40" ShadowDepth="2" Opacity="0.5"/>
-                </Border.Effect>
-
-            </Border>
-
-
-        </StackPanel>
-
-        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Image Source="..\assets\logo_pg.png" Width="500" Height="500" Stretch="Uniform" />
-            <Label Grid.Column="1" Content="Apa Lu Mau, Gua Ada" HorizontalAlignment="Center" 
-                   Margin="0,0,0,0" VerticalAlignment="Top"
-                   FontFamily="Montserrat"
-                   FontSize="80"/>
-        </StackPanel>
+        <Border Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Viewbox Grid.Row="0">
+                    <Label x:Name="lbl_Login" Content="Login" FontSize="20" FontWeight="Bold" FontFamily="Montserrat" Foreground="#FFFFFF"/>
+                </Viewbox>
+                <Viewbox Grid.Row="1">
+                    <Border Background="#FFF1DB" CornerRadius="30" Margin="40">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label x:Name="lbl_Username" Grid.Row="0" Content="Username" FontSize="30" FontWeight="Bold" FontFamily="Montserrat" Foreground="#000000" Margin="25,15,0,0"/>
+                            <TextBox x:Name="box_Username" Style="{StaticResource RoundedTextBoxStyle}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" FontFamily="Montserrat" FontSize="50" Foreground="Gray" Margin="15,0,15,15"/>
+                            <Label x:Name="lbl_Pass" Grid.Row="2" Content="Password" FontSize="30" FontWeight="Bold" FontFamily="Montserrat" Foreground="#000000" Margin="25,15,0,0"/>
+                            <PasswordBox x:Name="box_Password" Style="{StaticResource RoundedPassBoxStyle}" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" FontFamily="Montserrat" FontSize="50" Foreground="Gray"  Margin="15,0,15,15"/>
+                            <Button x:Name="btn_Login" Content="Login" FontFamily="Montserrat" FontSize="30" FontWeight="Bold" Foreground="#FFFFFF" Background="#88C273" Grid.Row="4" Style="{StaticResource RoundedButtonStyle}" Width="200" Height="60" Margin="10" Click="LoginButton_Click"/>
+                            <Label x:Name="lbl_Create" Grid.Row="5" Content="Create an Account" FontSize="20" FontWeight="Bold" FontFamily="Montserrat" Foreground="#000000" HorizontalAlignment="Center" MouseDown="lbl_Clickable_SignUp"/>
+                        </Grid>
+                    </Border>
+                </Viewbox>
+            </Grid>
+            <Border.Effect>
+                <DropShadowEffect Color="Black" BlurRadius="40" ShadowDepth="2" Opacity="0.5"/>
+            </Border.Effect>
+        </Border>
+        <Border Grid.Column="1">
+            <Viewbox>
+                <Border Margin="100">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Source="/assets/logo_pg.png"/>
+                        <Label x:Name="lbl_Slogan" Grid.Row="1" Content="Apa Lu Mau, Gua Ada" FontSize="100" FontWeight="Bold" FontFamily="Montserrat" Foreground="#000000" HorizontalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </Viewbox>
+            <Border.Effect>
+                <DropShadowEffect Color="Black" BlurRadius="40" ShadowDepth="2" Opacity="0.5"/>
+            </Border.Effect>
+        </Border>
     </Grid>
 </Page>
 

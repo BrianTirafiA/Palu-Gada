@@ -69,7 +69,7 @@ namespace PaluGada.view
             if (e.Key == Key.Enter)
             {
                 string location = box_Location.Text;
-                if (!string.IsNullOrEmpty(location))
+                /*if (!string.IsNullOrEmpty(location))
                 {
                     // Mencari koordinat berdasarkan lokasi
                     var provider = GMapProviders.GoogleMap;
@@ -99,7 +99,7 @@ namespace PaluGada.view
                     {
                         MessageBox.Show("Location not found, please try again.");
                     }
-                }
+                }*/
             }
         }
     }

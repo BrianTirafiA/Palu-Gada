@@ -33,16 +33,24 @@
         </Grid.ColumnDefinitions>
 
         <!-- Sidebar dengan Tombol Navigasi -->
-        <StackPanel Grid.Column="0" Background="#BEEBAD">
-            <Label Content="PALU GADA APP" HorizontalAlignment="Center" FontSize="40" Margin="0,30,0,0" FontWeight="Bold"/>
-            <Button x:Name="HomeButton" Content="Home" Style="{StaticResource SidebarButtonStyle}" Click="HomeButton_Click" BorderThickness="0"/>
-            <Button Content="Add Post" Style="{StaticResource SidebarButtonStyle}" Click="AddPostButton_Click" BorderThickness="0"/>
-            <Button Content="My Item" Style="{StaticResource SidebarButtonStyle}" Click="MyItemButton_Click" BorderThickness="0"/>
-            <Button Content="Wishlist" Style="{StaticResource SidebarButtonStyle}" Click="WishlistButton_Click" BorderThickness="0"/>
-            <Button Content="Chat" Style="{StaticResource SidebarButtonStyle}" Click="ChatButton_Click" BorderThickness="0"/>
-        </StackPanel>
+        <Border Grid.Column="0" Background="#BEEBAD">
+            <Viewbox >
+                <StackPanel>
+                    <Label Content="PALU GADA APP" HorizontalAlignment="Center" FontSize="40" Margin="0,0,0,0" FontWeight="Bold"/>
+                    <Button x:Name="HomeButton" Content="Home" Style="{StaticResource SidebarButtonStyle}" Click="HomeButton_Click" BorderThickness="0"/>
+                    <Button Content="Add Post" Style="{StaticResource SidebarButtonStyle}" Click="AddPostButton_Click" BorderThickness="0"/>
+                    <Button Content="My Item" Style="{StaticResource SidebarButtonStyle}" Click="MyItemButton_Click" BorderThickness="0"/>
+                    <Button Content="Wishlist" Style="{StaticResource SidebarButtonStyle}" Click="WishlistButton_Click" BorderThickness="0"/>
+                    <Button Content="Chat" Style="{StaticResource SidebarButtonStyle}" Click="ChatButton_Click" BorderThickness="0"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
 
         <!-- Frame untuk Navigasi Halaman -->
-        <Frame x:Name="MainMenuFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
+        <Border Grid.Column="1">
+            <Viewbox>
+                <Frame x:Name="MainMenuFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
+            </Viewbox>
+        </Border>
     </Grid>
 </Window>

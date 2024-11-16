@@ -4,15 +4,75 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PaluGada.view"
-                      mc:Ignorable="d"
+      xmlns:local1="clr-namespace:PaluGada.viewModel"
+      mc:Ignorable="d"
       Background="White"
-      Title="mainmenu" Height="1080" Width="1414">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
-            <Label Content="Wishlist" FontSize="50"/>
-        </StackPanel>
-    </Grid>
+      Title="Wishlist Page" Height="1080" Width="1414">
+
+    <!-- DataContext setup for WishlistViewModel -->
+    <Page.DataContext>
+        <local1:WishlistViewModel/>
+    </Page.DataContext>
+
+    <StackPanel Background="White">
+        <!-- Search Bar -->
+        <Border Background="LightGray" Height="50" CornerRadius="25" Margin="10">
+            <Grid>
+                <TextBox x:Name="SearchBox" 
+                         VerticalAlignment="Center" 
+                         Background="Transparent" 
+                         BorderThickness="0" 
+                         Padding="15,0,50,0" 
+                         FontSize="16" 
+                         Foreground="Gray"
+                         PlaceholderText="Search item"/>
+                <Image Source="search_icon.png" 
+                       Width="24" Height="24" 
+                       HorizontalAlignment="Right" 
+                       VerticalAlignment="Center" 
+                       Margin="0,0,15,0"/>
+            </Grid>
+        </Border>
+
+        <!-- Items List -->
+        <ItemsControl ItemsSource="{Binding ItemList}" Margin="10">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="LightGray" CornerRadius="10" Margin="0,5">
+                        <StackPanel Orientation="Horizontal" Padding="10">
+                            <!-- Item Image -->
+                            <Image Source="{Binding ImagePath}" Width="60" Height="60" Margin="5"/>
+
+                            <!-- Item Details -->
+                            <StackPanel Margin="10,0,0,0">
+                                <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="Bold" Foreground="Black"/>
+                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" MaxWidth="200" Foreground="Black" Margin="0,5,0,0"/>
+                            </StackPanel>
+
+                            <!-- Action Buttons -->
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="10,0,0,0">
+                                <Button Content="Sold" 
+                                        Background="Teal" 
+                                        Foreground="White" 
+                                        Margin="0,0,0,5" 
+                                        Width="80" 
+                                        FontWeight="Bold"/>
+                                <Button Content="Remove" 
+                                        Background="Red" 
+                                        Foreground="White" 
+                                        Margin="0,0,0,5" 
+                                        Width="80" 
+                                        FontWeight="Bold"/>
+                                <Button Content="Edit Item" 
+                                        Background="Gold" 
+                                        Foreground="Black" 
+                                        Width="80" 
+                                        FontWeight="Bold"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
 </Page>
