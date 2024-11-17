@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PaluGada.model;
 
 namespace PaluGada.view
 {
@@ -21,7 +22,7 @@ namespace PaluGada.view
     /// </summary>
     public partial class SignUp : Page
     {
-        private readonly string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=lhanif;Database=junpro2";
+       // private readonly string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=lhanif;Database=junpro2";
 
         public SignUp()
         {
@@ -52,7 +53,7 @@ namespace PaluGada.view
             {
                 MessageBox.Show("Sign-up successful!");
                 MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-                mainWindow.LoginFrame.Navigate(new ConfirmEmail());
+                mainWindow.LoginFrame.Navigate(new Login());
             }
             else
             {
@@ -64,7 +65,7 @@ namespace PaluGada.view
         {
             try
             {
-                using (var connection = new NpgsqlConnection(connectionString))
+                using (var connection = new NpgsqlConnection(Session.ConnectionString))
                 {
                     connection.Open();
 

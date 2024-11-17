@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PaluGada.viewModel;
+using PaluGada.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Npgsql;
 
 namespace PaluGada.view
 {
@@ -23,6 +26,9 @@ namespace PaluGada.view
         public WishlistPage()
         {
             InitializeComponent();
+
+            this.DataContext = new WishlistViewModel(Session.UserId);
+
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -53,6 +59,66 @@ namespace PaluGada.view
                 textBox.Foreground = System.Windows.Media.Brushes.Black;
             }
         }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Ambil ItemId dari Tag tombol
+            if (sender is Button button && button.Tag is int itemId)
+            {
+                int buyerId = Session.UserId; // ID pembeli dari session
+
+                using (var conn = new NpgsqlConnection(Session.ConnectionString))
+                {
+                    conn.Open();
+
+                    // Langkah 1: Dapatkan wishlist_id untuk buyer_id
+                    string getWishlistIdQuery = @"
+                    SELECT wishlist_id 
+                    FROM wishlist 
+                    WHERE buyer_id = @BuyerId;";
+
+                    int wishlistId;
+                    using (var cmd = new NpgsqlCommand(getWishlistIdQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("BuyerId", buyerId);
+                        var result = cmd.ExecuteScalar();
+                        if (result == null)
+                        {
+                            MessageBox.Show("Wishlist tidak ditemukan.");
+                            return; // Keluar jika wishlist tidak ditemukan
+                        }
+                        wishlistId = (int)result;
+                    }
+
+                    // Langkah 2: Hapus item dari wishlist_item
+                    string deleteItemQuery = @"
+                    DELETE FROM wishlist_item
+                    WHERE wishlist_id = @WishlistId AND item_id = @ItemId;";
+
+                    using (var cmd = new NpgsqlCommand(deleteItemQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("WishlistId", wishlistId);
+                        cmd.Parameters.AddWithValue("ItemId", itemId);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Item berhasil dihapus dari wishlist!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Item tidak ditemukan dalam wishlist.");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Gagal mengambil ID item.");
+            }
+        }
+
+
 
         private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
         {

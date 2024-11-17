@@ -8,6 +8,7 @@ namespace PaluGada.model
 {
     public static class Session
     {
+        public static string ConnectionString { get; } = "Host=junpro.postgres.database.azure.com;Port=5432;Username=junproadmin;Password=Usti12345;Database=palugada";
         // ID pengguna yang sedang login
         public static int UserId { get; set; }
 

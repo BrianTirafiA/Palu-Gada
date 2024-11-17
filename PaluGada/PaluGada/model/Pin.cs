@@ -88,7 +88,7 @@ namespace PaluGada.model
         private void ShowDetails()
         {
             // Tampilkan DetailWindow dengan data barang
-            var detailWindow = new DetailWindow(Name, Description, ImagePath);
+            var detailWindow = new DetailWindow(Name, Description, ImagePath, ItemId );
             detailWindow.Show();
         }
     }

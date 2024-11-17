@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\PalGad\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\
+C:\Users\LOQ\Documents\GitHub\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\
 PaluGada
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-D:\PalGad\Palu-Gada\PaluGada\PaluGada\App.xaml
-111903940286
+C:\Users\LOQ\Documents\GitHub\Palu-Gada\PaluGada\PaluGada\App.xaml
+12-1210139717
 
-181863820108
-209-694727893
-MainWindow.xaml;view\AddPost.xaml;view\Chat.xaml;view\ConfirmEmail.xaml;view\DetailWindow.xaml;view\Home.xaml;view\Login.xaml;view\MainMenu.xaml;view\MyItem.xaml;view\SignUp.xaml;view\WishlistPage.xaml;
+21-229344745
+2092123753539
+MainWindow.xaml;view\AddPost.xaml;view\Chat.xaml;view\ConfirmEmail.xaml;view\DetailWindow.xaml;view\EditItemWindow.xaml;view\Home.xaml;view\Login.xaml;view\MainMenu.xaml;view\MyItem.xaml;view\SignUp.xaml;view\WishlistPage.xaml;
 
 False
 
