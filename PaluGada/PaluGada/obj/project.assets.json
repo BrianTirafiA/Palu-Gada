@@ -1530,19 +1530,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LOQ\\.nuget\\packages\\": {}
+    "C:\\Users\\brian\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LOQ\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\PaluGada.csproj",
+      "projectUniqueName": "D:\\PalGad\\Palu-Gada\\PaluGada\\PaluGada\\PaluGada.csproj",
       "projectName": "PaluGada",
-      "projectPath": "C:\\Users\\LOQ\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\PaluGada.csproj",
-      "packagesPath": "C:\\Users\\LOQ\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LOQ\\Documents\\GitHub\\Palu-Gada\\PaluGada\\PaluGada\\obj\\",
+      "projectPath": "D:\\PalGad\\Palu-Gada\\PaluGada\\PaluGada\\PaluGada.csproj",
+      "packagesPath": "C:\\Users\\brian\\.nuget\\packages\\",
+      "outputPath": "D:\\PalGad\\Palu-Gada\\PaluGada\\PaluGada\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\LOQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\brian\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1550,7 +1550,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1563,11 +1562,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1610,7 +1604,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

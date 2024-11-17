@@ -7,7 +7,8 @@
       xmlns:local1="clr-namespace:PaluGada.viewModel"
       mc:Ignorable="d"
       Background="White"
-      Title="Wishlist Page" Height="1080" Width="1414">
+      Title="Wishlist Page"
+      Height="1080" Width="1414">
 
     <!-- DataContext setup for WishlistViewModel -->
     <Page.DataContext>
@@ -18,15 +19,18 @@
         <!-- Search Bar -->
         <Border Background="LightGray" Height="50" CornerRadius="25" Margin="10">
             <Grid>
+                <!-- Placeholder functionality -->
                 <TextBox x:Name="SearchBox" 
                          VerticalAlignment="Center" 
                          Background="Transparent" 
                          BorderThickness="0" 
-                         Padding="15,0,50,0" 
+                         Margin="15,0,50,0" 
                          FontSize="16" 
-                         Foreground="Gray"
-                         PlaceholderText="Search item"/>
-                <Image Source="search_icon.png" 
+                         Foreground="Gray" 
+                         Text="Search item"
+                         GotFocus="SearchBox_GotFocus"
+                         LostFocus="SearchBox_LostFocus"/>
+                <Image Source="/assets/search.png" 
                        Width="24" Height="24" 
                        HorizontalAlignment="Right" 
                        VerticalAlignment="Center" 
@@ -39,7 +43,7 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Border Background="LightGray" CornerRadius="10" Margin="0,5">
-                        <StackPanel Orientation="Horizontal" Padding="10">
+                        <StackPanel Orientation="Horizontal" Margin="10">
                             <!-- Item Image -->
                             <Image Source="{Binding ImagePath}" Width="60" Height="60" Margin="5"/>
 

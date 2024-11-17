@@ -24,5 +24,43 @@ namespace PaluGada.view
         {
             InitializeComponent();
         }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                // Remove placeholder text on focus
+                if (textBox.IsFocused && textBox.Text == "Search item")
+                {
+                    textBox.Text = "";
+                    textBox.Foreground = System.Windows.Media.Brushes.Black;
+                }
+
+                // Show placeholder text when empty and not focused
+                if (!textBox.IsFocused && string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    textBox.Text = "Search item";
+                    textBox.Foreground = System.Windows.Media.Brushes.Gray;
+                }
+            }
+        }
+
+        private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox textBox && textBox.Text == "Search item")
+            {
+                textBox.Text = "";
+                textBox.Foreground = System.Windows.Media.Brushes.Black;
+            }
+        }
+
+        private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = "Search item";
+                textBox.Foreground = System.Windows.Media.Brushes.Gray;
+            }
+        }
     }
 }
