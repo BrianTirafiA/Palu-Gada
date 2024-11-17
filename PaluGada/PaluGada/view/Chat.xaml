@@ -8,37 +8,25 @@
       Background="White"
       Title="mainmenu" Height="1080" Width="1414">
     <Grid>
-        <Viewbox>
-            <StackPanel Orientation="Vertical" Margin="10" >
-                <Grid Height="1070" Width="1404">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="3*"/>
-                    </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
+            <!-- Header -->
+            <TextBlock Text="Chatrooms" FontSize="24" FontWeight="Bold" Margin="10"/>
 
-                    <!-- Username Box -->
-                    <TextBox Name="UsernameBox" FontSize="50" Grid.Row="0" Text="Enter your username" Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="0,0,0,10" />
-
-                    <!-- Register Button -->
-                    <Button Content="Register" FontSize="50" Grid.Row="1" Click="RegisterButton_Click" Margin="0,0,0,10" />
-
-                    <!-- Recipient Box -->
-                    <TextBox Name="RecipientBox" FontSize="50" Grid.Row="2" Text="Recipient's username" Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="0,0,0,10" />
-
-                    <!-- Message Box -->
-                    <TextBox Name="MessageBox" FontSize="50" Grid.Row="3" Text="Enter your message" Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="0,0,0,10" />
-
-                    <!-- Send Button -->
-                    <Button Content="Send" FontSize="50" Grid.Row="4" Click="SendButton_Click" Margin="0,0,0,10" />
-
-                    <!-- Chat Box -->
-                    <ListBox Name="ChatBox" Grid.Row="5" FontSize="50"/>
-                </Grid>
-            </StackPanel>
-        </Viewbox>
+            <!-- List of Chatrooms -->
+            <ListBox x:Name="ChatroomList" SelectionChanged="ChatroomList_SelectionChanged" Margin="10">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="10" Padding="10" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <!-- Chatroom Partner -->
+                                <TextBlock Text="{Binding PartnerName}" FontSize="16" VerticalAlignment="Center" />
+                                <!-- Last Message Preview -->
+                                <TextBlock Text="{Binding LastMessage}" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Gray"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
     </Grid>
 </Page>

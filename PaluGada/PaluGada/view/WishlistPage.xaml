@@ -11,9 +11,9 @@
       Height="1080" Width="1414">
 
     <!-- DataContext setup for WishlistViewModel -->
-    <Page.DataContext>
+    <!--<Page.DataContext>
         <local1:WishlistViewModel/>
-    </Page.DataContext>
+    </Page.DataContext>-->
 
     <StackPanel Background="White">
         <!-- Search Bar -->
@@ -39,7 +39,7 @@
         </Border>
 
         <!-- Items List -->
-        <ItemsControl ItemsSource="{Binding ItemList}" Margin="10">
+        <ItemsControl ItemsSource="{Binding ItemListWishlist}" Margin="10">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Border Background="LightGray" CornerRadius="10" Margin="0,5">
@@ -66,7 +66,9 @@
                                         Foreground="White" 
                                         Margin="0,0,0,5" 
                                         Width="80" 
-                                        FontWeight="Bold"/>
+                                        FontWeight="Bold"
+                                        Tag="{Binding ItemId}"
+                                        Click="RemoveButton_Click"/>
                                 <Button Content="Edit Item" 
                                         Background="Gold" 
                                         Foreground="Black" 

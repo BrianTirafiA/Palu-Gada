@@ -1,9 +1,9 @@
 ﻿<Application x:Class="PaluGada.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PaluGada"
+             xmlns:viewModel="clr-namespace:PaluGada.viewModel"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <viewModel:BubbleColorConverter x:Key="BubbleColorConverter"/>
     </Application.Resources>
 </Application>

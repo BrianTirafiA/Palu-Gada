@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PaluGada.model;
 using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsPresentation;
@@ -17,8 +18,8 @@ namespace PaluGada.view
 {
     public partial class AddPost : Page
     {
-        private PointLatLng currentPosition; // Untuk menyimpan koordinat yang dipilih
-        private GMapMarker currentMarker; // Marker saat ini di peta
+        private PointLatLng currentPosition;
+        private GMapMarker currentMarker;
 
         public AddPost()
         {
@@ -28,15 +29,14 @@ namespace PaluGada.view
 
         private void ConfigureMap()
         {
-            // Konfigurasi awal peta
+
             mapControl.MapProvider = GMapProviders.GoogleMap;
-            mapControl.Position = new PointLatLng(-7.801268, 110.364868); // Lokasi default (misalnya Yogyakarta)
+            mapControl.Position = new PointLatLng(-7.801268, 110.364868);
             mapControl.MinZoom = 2;
             mapControl.MaxZoom = 18;
             mapControl.Zoom = 12;
-            mapControl.ShowCenter = false; // Hilangkan crosshair di tengah peta
+            mapControl.ShowCenter = false;
 
-            // Tambahkan marker awal di tengah peta
             currentPosition = mapControl.Position;
             currentMarker = new GMapMarker(currentPosition)
             {
@@ -54,49 +54,39 @@ namespace PaluGada.view
 
         private void UploadButton_Click(object sender, RoutedEventArgs e)
         {
-            // Membuka dialog untuk memilih file gambar
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
 
             if (openFileDialog.ShowDialog() == true)
             {
-                // Path gambar asli dari file
                 string sourceFilePath = openFileDialog.FileName;
 
-                // Folder tujuan untuk menyimpan gambar
                 string targetFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets/item_photo");
                 if (!System.IO.Directory.Exists(targetFolder))
                 {
-                    System.IO.Directory.CreateDirectory(targetFolder); // Buat folder jika belum ada
+                    System.IO.Directory.CreateDirectory(targetFolder);
                 }
 
-                // Buat nama file unik
                 string newFileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(sourceFilePath);
 
-                // Path tujuan
                 string targetFilePath = System.IO.Path.Combine(targetFolder, newFileName);
 
-                // Salin file ke folder tujuan
                 System.IO.File.Copy(sourceFilePath, targetFilePath, true);
 
-                // Simpan path relatif gambar
                 UploadButton.Tag = System.IO.Path.Combine("assets/item_photo", newFileName);
 
-                // Menampilkan pratinjau gambar
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(targetFilePath, UriKind.Absolute);
                 bitmap.EndInit();
 
-                // Ubah ukuran tombol sesuai ukuran asli gambar
                 UploadButton.Width = bitmap.PixelWidth;
                 UploadButton.Height = bitmap.PixelHeight;
 
-                // Tampilkan gambar dalam tombol
                 Image imagePreview = new Image
                 {
                     Source = bitmap,
-                    Stretch = Stretch.UniformToFill // Memastikan gambar tetap proporsional
+                    Stretch = Stretch.UniformToFill
                 };
 
                 UploadButton.Content = imagePreview;
@@ -112,12 +102,10 @@ namespace PaluGada.view
 
                 if (!string.IsNullOrEmpty(location))
                 {
-                    // Gunakan Geocoding untuk mendapatkan koordinat berdasarkan lokasi
                     var coordinates = await GetCoordinatesFromNominatim(location);
 
                     if (coordinates.HasValue)
                     {
-                        // Perbarui posisi peta dan marker
                         mapControl.Position = coordinates.Value;
                         currentPosition = coordinates.Value;
                         currentMarker.Position = currentPosition;
@@ -140,7 +128,7 @@ namespace PaluGada.view
 
                 using (HttpClient client = new HttpClient())
                 {
-                    client.DefaultRequestHeaders.Add("User-Agent", "YourAppName"); // Tambahkan user agent untuk permintaan
+                    client.DefaultRequestHeaders.Add("User-Agent", "YourAppName");
                     HttpResponseMessage response = await client.GetAsync(requestUri);
                     if (response.IsSuccessStatusCode)
                     {
@@ -175,13 +163,10 @@ namespace PaluGada.view
 
         private void mapControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            // Ambil posisi mouse pada peta
             Point mousePosition = e.GetPosition(mapControl);
 
-            // Konversi posisi mouse menjadi koordinat geografis
             currentPosition = mapControl.FromLocalToLatLng((int)mousePosition.X, (int)mousePosition.Y);
 
-            // Perbarui posisi marker
             currentMarker.Position = currentPosition;
 
             MessageBox.Show($"Marker moved to:\nLat: {currentPosition.Lat}, Lng: {currentPosition.Lng}");
@@ -189,7 +174,6 @@ namespace PaluGada.view
 
         private void mapControl_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            // Cegah zooming pada page saat scroll di peta
             if (mapControl.IsMouseOver)
             {
                 if (e.Delta > 0)
@@ -219,11 +203,10 @@ namespace PaluGada.view
                 string description = box_Description.Text.Trim();
                 double latitude = currentPosition.Lat;
                 double longitude = currentPosition.Lng;
-                int sellerId = PaluGada.model.Session.UserId; // Ambil ID user dari sesi login
-                string imagePath = UploadButton.Tag.ToString(); // Ambil path gambar yang sudah disimpan
+                int sellerId = PaluGada.model.Session.UserId;
+                string imagePath = UploadButton.Tag.ToString();
 
-                // Simpan data ke database
-                using (var connection = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=lhanif;Database=junpro2"))
+                using (var connection = new NpgsqlConnection(Session.ConnectionString))
                 {
                     connection.Open();
 

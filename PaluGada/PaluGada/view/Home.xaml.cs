@@ -7,12 +7,13 @@ using Npgsql;
 using System.Windows.Shapes;
 using System.Windows.Media;
 using GMap.NET.MapProviders;
+using PaluGada.model;
 
 namespace PaluGada.view
 {
     public partial class Home : Page
     {
-        private readonly string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=lhanif;Database=junpro2";
+        // private readonly string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=lhanif;Database=junpro2";
 
         public Home()
         {
@@ -36,7 +37,7 @@ namespace PaluGada.view
         {
             try
             {
-                using (var connection = new NpgsqlConnection(connectionString))
+                using (var connection = new NpgsqlConnection(Session.ConnectionString))
                 {
                     connection.Open();
 
@@ -144,7 +145,7 @@ namespace PaluGada.view
         private void ShowDetails(int itemId, string name, string description, string imagePath)
         {
             // Logika untuk menampilkan detail barang
-            var detailWindow = new DetailWindow(name, description, imagePath);
+            var detailWindow = new DetailWindow(name, description, imagePath, itemId);
             detailWindow.Show();
 
             // Anda bisa mengganti MessageBox dengan jendela detail yang lebih interaktif jika diperlukan

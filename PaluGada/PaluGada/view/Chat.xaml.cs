@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.AspNetCore.SignalR.Client;
+using Npgsql;
+using PaluGada.model;
 
 namespace PaluGada.view
 {
@@ -21,89 +24,69 @@ namespace PaluGada.view
     /// </summary>
     public partial class Chat : Page
     {
-        private HubConnection connection;
-        private string username;
+        public ObservableCollection<Chatroom> Chatrooms { get; set; }
+
         public Chat()
         {
             InitializeComponent();
-            InitializeSignalR();
+            LoadChatrooms();
         }
 
-        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        private void LoadChatrooms()
         {
-            var textBox = sender as TextBox;
-            if (textBox != null && textBox.Foreground == Brushes.Gray)
+            Chatrooms = new ObservableCollection<Chatroom>();
+
+            using (var conn = new NpgsqlConnection(Session.ConnectionString))
             {
-                textBox.Text = string.Empty;
-                textBox.Foreground = Brushes.Black;
-            }
-        }
+                conn.Open();
 
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            var textBox = sender as TextBox;
-            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                if (textBox.Name == "UsernameBox") textBox.Text = "Enter your username";
-                else if (textBox.Name == "RecipientBox") textBox.Text = "Recipient's username";
-                else if (textBox.Name == "MessageBox") textBox.Text = "Enter your message";
+                string query = @"
+            SELECT c.chatroom_id, 
+                   CASE 
+                       WHEN c.buyer_id = @UserId THEN s.name
+                       ELSE b.name 
+                   END AS partner_name,
+                   (SELECT content 
+                    FROM message m 
+                    WHERE m.chatroom_id = c.chatroom_id 
+                    ORDER BY timestamp DESC 
+                    LIMIT 1) AS last_message
+                FROM chatroom c
+                JOIN appuser b ON c.buyer_id = b.user_id
+                JOIN appuser s ON c.seller_id = s.user_id
+                WHERE c.buyer_id = @UserId OR c.seller_id = @UserId
+                ORDER BY c.chatroom_id DESC";
 
-                textBox.Foreground = Brushes.Gray;
-            }
-        }
-
-        private async void InitializeSignalR()
-        {
-            connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:5094/ChatHub") // Server URL
-                .WithAutomaticReconnect()
-                .Build();
-
-            // Handle incoming messages
-            connection.On<string, string>("ReceiveMessage", (sender, message) =>
-            {
-                Dispatcher.Invoke(() =>
+                using (var cmd = new NpgsqlCommand(query, conn))
                 {
-                    ChatBox.Items.Add($"{sender}: {message}");
-                });
-            });
+                    cmd.Parameters.AddWithValue("@UserId", Session.UserId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Chatrooms.Add(new Chatroom
+                            {
+                                ChatroomId = reader.GetInt32(0),
+                                PartnerName = reader.GetString(1),
+                                LastMessage = reader.IsDBNull(2) ? "No messages yet" : reader.GetString(2)
+                            });
+                        }
+                    }
+                }
+            }
 
-            try
-            {
-                await connection.StartAsync();
-                ChatBox.Items.Add("Connected to the server.");
-            }
-            catch (Exception ex)
-            {
-                ChatBox.Items.Add($"Connection error: {ex.Message}");
-            }
+            ChatroomList.ItemsSource = Chatrooms;
         }
 
-        private async void RegisterButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (connection.State == HubConnectionState.Connected)
-            {
-                username = UsernameBox.Text;
-                await connection.InvokeAsync("RegisterUser", username);
-            }
-            else
-            {
-                ChatBox.Items.Add("Unable to register. Not connected to the server.");
-            }
-        }
 
-        private async void SendButton_Click(object sender, RoutedEventArgs e)
+
+        private void ChatroomList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (connection.State == HubConnectionState.Connected)
+            if (ChatroomList.SelectedItem is Chatroom selectedChatroom)
             {
-                var recipient = RecipientBox.Text;
-                var message = MessageBox.Text;
-                await connection.InvokeAsync("SendMessageToUser", username, recipient, message);
-                MessageBox.Clear();
-            }
-            else
-            {
-                ChatBox.Items.Add("Unable to send message. Not connected to the server.");
+                // Buka ChatRoomPage sebagai Window
+                var chatRoomWindow = new ChatRoomPage(selectedChatroom.ChatroomId);
+                chatRoomWindow.Show();
             }
         }
     }

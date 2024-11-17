@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PaluGada.model;
 using Npgsql;
 
 namespace PaluGada.view
@@ -40,14 +41,7 @@ namespace PaluGada.view
             string username = box_Username.Text.Trim();
             string password = box_Password.Password;
 
-            // Navigasi ke MainMenu
-            MainMenu mainMenu = new MainMenu();
-            mainMenu.Show();
-
-            // Tutup jendela login
-            Window.GetWindow(this)?.Close();
-
-            /*if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Username and password must not be empty.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -72,14 +66,14 @@ namespace PaluGada.view
             else
             {
                 MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-            }*/
+            }
         }
 
         private int AuthenticateUser(string username, string password)
         {
             try
             {
-                using (var connection = new NpgsqlConnection(connectionString))
+                using (var connection = new NpgsqlConnection(Session.ConnectionString))
                 {
                     connection.Open();
 
