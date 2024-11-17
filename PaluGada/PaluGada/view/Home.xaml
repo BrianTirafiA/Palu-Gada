@@ -7,18 +7,23 @@
       xmlns:local="clr-namespace:PaluGada.view"
       mc:Ignorable="d"
       Background="White"
-      Title="mainmenu" Height="1080" Width="1414">
+      Title="Home" Height="1080" Width="1414">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="7*" />
         </Grid.RowDefinitions>
+
+        <!-- Header -->
         <Viewbox HorizontalAlignment="Center" Grid.Row="0">
-            <Label Content="Home" FontSize="50" HorizontalAlignment="Center"/>
+            <Label Content="Home" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" />
         </Viewbox>
+
+        <!-- Map -->
         <Viewbox HorizontalAlignment="Center" Grid.Row="1">
-            <Border>
-                <wpf:GMapControl x:Name="MapControl" Width="1331" Height="868" Margin="0" BorderThickness="5"/>
+            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
+                <wpf:GMapControl x:Name="MapControl" Width="1300" Height="800" Margin="10"
+                                 PreviewMouseWheel="MapControl_PreviewMouseWheel" />
             </Border>
         </Viewbox>
     </Grid>

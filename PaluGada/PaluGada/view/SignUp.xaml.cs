@@ -21,7 +21,7 @@ namespace PaluGada.view
     /// </summary>
     public partial class SignUp : Page
     {
-        private readonly string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=lhanif;Database=junpro";
+        private readonly string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=lhanif;Database=junpro2";
 
         public SignUp()
         {
@@ -39,14 +39,16 @@ namespace PaluGada.view
         {
             string username = box_Username.Text.Trim();
             string password = box_Password.Password;
+            string name = box_Name.Text.Trim();
+            string email = box_Email.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(email))
             {
                 MessageBox.Show("Username and password must not be empty.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (SignUpUser(username, password))
+            if (SignUpUser(username, password, name, email))
             {
                 MessageBox.Show("Sign-up successful!");
                 MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
@@ -58,7 +60,7 @@ namespace PaluGada.view
             }
         }
 
-        private bool SignUpUser(string username, string password)
+        private bool SignUpUser(string username, string password, string name, string email)
         {
             try
             {
@@ -81,11 +83,13 @@ namespace PaluGada.view
                     }
 
                     // Insert new user
-                    string insertQuery = "INSERT INTO AppUser (username, password) VALUES (@username, @password)";
+                    string insertQuery = "INSERT INTO AppUser (username, password, name, email) VALUES (@username, @password, @name, @email)";
                     using (var command = new NpgsqlCommand(insertQuery, connection))
                     {
                         command.Parameters.AddWithValue("@username", username);
                         command.Parameters.AddWithValue("@password", password);
+                        command.Parameters.AddWithValue("@name", name);
+                        command.Parameters.AddWithValue("@email", email);
                         command.ExecuteNonQuery();
                     }
 

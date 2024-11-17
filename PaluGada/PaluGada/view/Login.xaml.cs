@@ -21,7 +21,7 @@ namespace PaluGada.view
     /// </summary>
     public partial class Login : Page
     {
-        private readonly string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=lhanif;Database=junpro";
+        private readonly string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=lhanif;Database=junpro2";
 
         public Login()
         {
@@ -40,34 +40,35 @@ namespace PaluGada.view
             string username = box_Username.Text.Trim();
             string password = box_Password.Password;
 
-            MessageBox.Show("Login successful!");
-
-            MainMenu mainMenuWindow = new MainMenu();
-            mainMenuWindow.Show();
-            Window.GetWindow(this)?.Close();
-
-            /*if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Username and password must not be empty.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (AuthenticateUser(username, password))
+            // Autentikasi user dan dapatkan user_id
+            int userId = AuthenticateUser(username, password);
+            if (userId > 0)
             {
                 MessageBox.Show("Login successful!");
 
-                MainMenu mainMenuWindow = new MainMenu();
-                mainMenuWindow.Show();
+                // Simpan user_id ke session
+                PaluGada.model.Session.UserId = userId;
 
-                Application.Current.MainWindow.Close();
+                // Navigasi ke MainMenu
+                MainMenu mainMenu = new MainMenu();
+                mainMenu.Show();
+
+                // Tutup jendela login
+                Window.GetWindow(this)?.Close();
             }
             else
             {
                 MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-            }*/
+            }
         }
 
-        private bool AuthenticateUser(string username, string password)
+        private int AuthenticateUser(string username, string password)
         {
             try
             {
@@ -75,24 +76,22 @@ namespace PaluGada.view
                 {
                     connection.Open();
 
-
-                    string query = "SELECT COUNT(*) FROM AppUser WHERE username = @username AND password = @password";
+                    string query = "SELECT user_id FROM AppUser WHERE username = @username AND password = @password";
 
                     using (var command = new NpgsqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@username", username);
                         command.Parameters.AddWithValue("@password", password);
-                        int userCount = Convert.ToInt32(command.ExecuteScalar());
 
-
-                        return userCount > 0;
+                        var result = command.ExecuteScalar();
+                        return result != null ? Convert.ToInt32(result) : 0; // Kembalikan user_id jika ditemukan
                     }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
+                return 0;
             }
         }
 
