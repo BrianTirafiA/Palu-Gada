@@ -40,7 +40,14 @@ namespace PaluGada.view
             string username = box_Username.Text.Trim();
             string password = box_Password.Password;
 
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            // Navigasi ke MainMenu
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.Show();
+
+            // Tutup jendela login
+            Window.GetWindow(this)?.Close();
+
+            /*if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Username and password must not be empty.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -65,7 +72,7 @@ namespace PaluGada.view
             else
             {
                 MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            }*/
         }
 
         private int AuthenticateUser(string username, string password)
