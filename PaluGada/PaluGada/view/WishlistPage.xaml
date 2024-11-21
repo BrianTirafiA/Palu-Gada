@@ -42,8 +42,9 @@
         <ItemsControl ItemsSource="{Binding ItemListWishlist}" Margin="10">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border Background="LightGray" CornerRadius="10" Margin="0,5">
+                    <Border Background="LightGray" CornerRadius="10" Height="150"  Margin="0,5">
                         <StackPanel Orientation="Horizontal" Margin="10">
+                            
                             <!-- Item Image -->
                             <Image Source="{Binding ImagePath}" Width="60" Height="60" Margin="5"/>
 

@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\LOQ\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\LOQ\\.nuget\\packages"
+      "C:\\Users\\brian\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\brian\\.nuget\\packages"
     ],
     "configProperties": {
       "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": true,
