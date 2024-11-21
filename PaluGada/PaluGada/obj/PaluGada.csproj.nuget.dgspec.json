@@ -46,6 +46,10 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.23.0, )"
+            },
             "GMap.NET.Core": {
               "target": "Package",
               "version": "[2.1.7, )"
@@ -55,6 +59,10 @@
               "version": "[2.1.7, )"
             },
             "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
               "target": "Package",
               "version": "[9.0.0, )"
             },

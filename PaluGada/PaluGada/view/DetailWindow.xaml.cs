@@ -53,7 +53,7 @@ namespace PaluGada.view
                         var result = cmd.ExecuteScalar();
                         if (result != null)
                         {
-                            SellerId = (int)result; // Isi nilai seller_id ke properti SellerId
+                            SellerId = (int)result; 
                         }
                     }
                 }
@@ -120,18 +120,16 @@ namespace PaluGada.view
             try
             {
                 int chatroomId = GetOrCreateChatroom(Session.UserId, SellerId);
-
                 var chatRoomPage = new ChatRoomPage(chatroomId);
                 chatRoomPage.Show();
                 this.Close();
-
-                this.Close(); 
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error navigating to chatroom: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
 
 
         private int GetOrCreateChatroom(int buyerId, int sellerId)
@@ -142,11 +140,10 @@ namespace PaluGada.view
                 {
                     conn.Open();
 
-                    // Periksa apakah chatroom sudah ada
                     string query = @"
-                        SELECT chatroom_id 
-                        FROM Chatroom 
-                        WHERE buyer_id = @BuyerId AND seller_id = @SellerId";
+                    SELECT chatroom_id 
+                    FROM Chatroom 
+                    WHERE buyer_id = @BuyerId AND seller_id = @SellerId";
 
                     using (var cmd = new NpgsqlCommand(query, conn))
                     {
@@ -156,23 +153,21 @@ namespace PaluGada.view
                         var result = cmd.ExecuteScalar();
                         if (result != null)
                         {
-                            // Chatroom sudah ada, kembalikan chatroom_id
                             return (int)result;
                         }
                     }
 
-                    // Buat chatroom baru jika belum ada
                     query = @"
-                        INSERT INTO Chatroom (buyer_id, seller_id, created_at)
-                        VALUES (@BuyerId, @SellerId, NOW())
-                        RETURNING chatroom_id";
+                    INSERT INTO Chatroom (buyer_id, seller_id, created_at)
+                    VALUES (@BuyerId, @SellerId, NOW())
+                    RETURNING chatroom_id";
 
                     using (var cmd = new NpgsqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@BuyerId", buyerId);
                         cmd.Parameters.AddWithValue("@SellerId", sellerId);
 
-                        return (int)cmd.ExecuteScalar();
+                        return (int)cmd.ExecuteScalar(); 
                     }
                 }
             }
@@ -181,6 +176,7 @@ namespace PaluGada.view
                 throw new Exception($"Error creating or retrieving chatroom: {ex.Message}");
             }
         }
+
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {

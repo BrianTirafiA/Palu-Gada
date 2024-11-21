@@ -55,12 +55,6 @@
 
                             <!-- Action Buttons -->
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="10,0,0,0">
-                                <Button Content="Sold" 
-                                        Background="Teal" 
-                                        Foreground="White" 
-                                        Margin="0,0,0,5" 
-                                        Width="80" 
-                                        FontWeight="Bold"/>
                                 <Button Content="Remove" 
                                         Background="Red" 
                                         Foreground="White" 
@@ -69,11 +63,6 @@
                                         FontWeight="Bold"
                                         Tag="{Binding ItemId}"
                                         Click="RemoveButton_Click"/>
-                                <Button Content="Edit Item" 
-                                        Background="Gold" 
-                                        Foreground="Black" 
-                                        Width="80" 
-                                        FontWeight="Bold"/>
                             </StackPanel>
                         </StackPanel>
                     </Border>

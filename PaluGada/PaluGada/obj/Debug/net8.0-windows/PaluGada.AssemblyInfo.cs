@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PaluGada")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+926c1aa284bb933a15646ec7ce36ff780b5b2c2a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d332c99bc84d5997984e01944c7f43eb07ae3156")]
 [assembly: System.Reflection.AssemblyProductAttribute("PaluGada")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PaluGada")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

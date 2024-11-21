@@ -13,6 +13,11 @@ using GMap.NET.WindowsPresentation;
 using Microsoft.Win32;
 using Newtonsoft.Json.Linq;
 using Npgsql;
+using Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs;
+using System.IO;
+using System.Configuration;
+
 
 namespace PaluGada.view
 {
@@ -52,7 +57,7 @@ namespace PaluGada.view
             mapControl.Markers.Add(currentMarker);
         }
 
-        private void UploadButton_Click(object sender, RoutedEventArgs e)
+        private async void UploadButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
@@ -61,37 +66,56 @@ namespace PaluGada.view
             {
                 string sourceFilePath = openFileDialog.FileName;
 
-                string targetFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets/item_photo");
-                if (!System.IO.Directory.Exists(targetFolder))
+                // Azure Blob Storage connection string dan container
+                string blobConnectionString = ConfigurationManager.ConnectionStrings["AzureBlobStorage"].ConnectionString;
+                string containerName = "imageuserpg";
+
+                try
                 {
-                    System.IO.Directory.CreateDirectory(targetFolder);
+                    // Membuat nama unik untuk file
+                    string blobName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(sourceFilePath);
+
+                    // Inisialisasi Blob Storage Client
+                    BlobServiceClient blobServiceClient = new BlobServiceClient(blobConnectionString);
+                    BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
+                    BlobClient blobClient = containerClient.GetBlobClient(blobName);
+
+                    // Upload file ke Azure Blob Storage
+                    await using (FileStream uploadFileStream = File.OpenRead(sourceFilePath))
+                    {
+                        await blobClient.UploadAsync(uploadFileStream, new BlobHttpHeaders { ContentType = "image/jpeg" });
+                        uploadFileStream.Close();
+                    }
+
+                    // Menyimpan URL file di Azure Blob Storage ke Tag
+                    string imageUrl = blobClient.Uri.ToString();
+                    UploadButton.Tag = imageUrl;
+
+                    // Mengatur preview gambar
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri(sourceFilePath, UriKind.Absolute); // Menggunakan file lokal untuk preview
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad; // Mencegah file terkunci setelah preview
+                    bitmap.EndInit();
+
+                    Image imagePreview = new Image
+                    {
+                        Source = bitmap,
+                        Stretch = Stretch.UniformToFill
+                    };
+
+                    UploadButton.Content = imagePreview;
+
+                    MessageBox.Show("Gambar berhasil diunggah dan preview ditampilkan.", "Sukses", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-
-                string newFileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(sourceFilePath);
-
-                string targetFilePath = System.IO.Path.Combine(targetFolder, newFileName);
-
-                System.IO.File.Copy(sourceFilePath, targetFilePath, true);
-
-                UploadButton.Tag = System.IO.Path.Combine("assets/item_photo", newFileName);
-
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(targetFilePath, UriKind.Absolute);
-                bitmap.EndInit();
-
-                UploadButton.Width = bitmap.PixelWidth;
-                UploadButton.Height = bitmap.PixelHeight;
-
-                Image imagePreview = new Image
+                catch (Exception ex)
                 {
-                    Source = bitmap,
-                    Stretch = Stretch.UniformToFill
-                };
-
-                UploadButton.Content = imagePreview;
+                    MessageBox.Show($"Terjadi kesalahan saat mengunggah gambar: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
+
+
 
 
         private async void box_Location_KeyDown(object sender, KeyEventArgs e)
@@ -203,16 +227,16 @@ namespace PaluGada.view
                 string description = box_Description.Text.Trim();
                 double latitude = currentPosition.Lat;
                 double longitude = currentPosition.Lng;
-                int sellerId = PaluGada.model.Session.UserId;
-                string imagePath = UploadButton.Tag.ToString();
+                int sellerId = PaluGada.model.Session.UserId; // Mengambil seller ID dari session
+                string imagePath = UploadButton.Tag.ToString(); // URL dari Azure Blob Storage
 
-                using (var connection = new NpgsqlConnection(Session.ConnectionString))
+                using (var connection = new NpgsqlConnection(Session.ConnectionString)) // Menggunakan connection string lama
                 {
                     connection.Open();
 
                     string query = @"
-                    INSERT INTO Item (seller_id, name, description, latitude, longitude, image_path)
-                    VALUES (@seller_id, @name, @description, @latitude, @longitude, @image_path)";
+                INSERT INTO Item (seller_id, name, description, latitude, longitude, image_path)
+                VALUES (@seller_id, @name, @description, @latitude, @longitude, @image_path)";
 
                     using (var command = new NpgsqlCommand(query, connection))
                     {
@@ -235,9 +259,6 @@ namespace PaluGada.view
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-
-
 
         private void ResetForm()
         {
