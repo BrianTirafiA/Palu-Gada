@@ -1,19 +1,9 @@
 ﻿using PaluGada.viewModel;
 using PaluGada.model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading; // Untuk timer
 using Npgsql;
 
 namespace PaluGada.view
@@ -23,12 +13,22 @@ namespace PaluGada.view
     /// </summary>
     public partial class WishlistPage : Page
     {
+        private DispatcherTimer RefreshTimer;
+
         public WishlistPage()
         {
             InitializeComponent();
 
+            // Set DataContext ke ViewModel
             this.DataContext = new WishlistViewModel(Session.UserId);
 
+            // Inisialisasi Timer untuk auto-refresh
+            RefreshTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(5) // Refresh setiap 5 detik
+            };
+            RefreshTimer.Tick += (s, e) => RefreshWishlist(); // Panggil RefreshWishlist() setiap tick
+            RefreshTimer.Start();
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -57,6 +57,15 @@ namespace PaluGada.view
             {
                 textBox.Text = "";
                 textBox.Foreground = System.Windows.Media.Brushes.Black;
+            }
+        }
+
+        private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = "Search item";
+                textBox.Foreground = System.Windows.Media.Brushes.Gray;
             }
         }
 
@@ -104,6 +113,7 @@ namespace PaluGada.view
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Item berhasil dihapus dari wishlist!");
+                            RefreshWishlist(); // Panggil RefreshWishlist untuk memperbarui daftar
                         }
                         else
                         {
@@ -118,15 +128,16 @@ namespace PaluGada.view
             }
         }
 
-
-
-        private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
+        private void RefreshWishlist()
         {
-            if (sender is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                textBox.Text = "Search item";
-                textBox.Foreground = System.Windows.Media.Brushes.Gray;
-            }
+            // Refresh ViewModel dengan data terbaru
+            this.DataContext = new WishlistViewModel(Session.UserId);
+        }
+
+        ~WishlistPage()
+        {
+            // Hentikan Timer saat halaman dihancurkan
+            RefreshTimer?.Stop();
         }
     }
 }

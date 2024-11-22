@@ -2,19 +2,9 @@
 using PaluGada.model;
 using PaluGada.viewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading; // Untuk timer
 
 namespace PaluGada.view
 {
@@ -23,10 +13,22 @@ namespace PaluGada.view
     /// </summary>
     public partial class MyItem : Page
     {
+        private DispatcherTimer RefreshTimer;
+
         public MyItem()
         {
             InitializeComponent();
+
+            // Set DataContext ke ViewModel
             this.DataContext = new MyItemViewModel(Session.UserId);
+
+            // Inisialisasi Timer untuk auto-refresh
+            RefreshTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(5) // Refresh setiap 5 detik
+            };
+            RefreshTimer.Tick += (s, e) => RefreshItemList(); // Panggil RefreshItemList() setiap tick
+            RefreshTimer.Start();
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
@@ -52,6 +54,9 @@ namespace PaluGada.view
                         {
                             MessageBox.Show("Item berhasil dihapus!");
                             RefreshItemList(); // Refresh UI untuk memperbarui daftar item
+
+                            // Cek jika daftar item kosong
+                            var viewModel = this.DataContext as MyItemViewModel;
                         }
                         else
                         {
@@ -85,6 +90,9 @@ namespace PaluGada.view
                         {
                             MessageBox.Show("Item telah terjual!");
                             RefreshItemList(); // Refresh UI untuk memperbarui daftar item
+
+                            // Cek jika daftar item kosong
+                            var viewModel = this.DataContext as MyItemViewModel;
                         }
                         else
                         {
@@ -104,14 +112,16 @@ namespace PaluGada.view
             }
         }
 
-
-
         private void RefreshItemList()
         {
             // Refresh ViewModel dan set ulang DataContext
             this.DataContext = new MyItemViewModel(Session.UserId);
         }
 
-
+        ~MyItem()
+        {
+            // Pastikan Timer dihentikan saat halaman dihancurkan
+            RefreshTimer?.Stop();
+        }
     }
 }

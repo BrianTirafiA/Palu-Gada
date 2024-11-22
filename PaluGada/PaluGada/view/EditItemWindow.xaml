@@ -59,7 +59,7 @@
 
                 <!-- Upload Photo -->
                 <Label Content="Photo" FontSize="30" HorizontalAlignment="Left" Width="164" Margin="30,20,0,0"/>
-                <Button x:Name="UploadButton" Width="392" Height="149" Margin="30,0,0,0" HorizontalAlignment="Left">
+                <Button x:Name="UploadButton" Width="392" Height="149" Margin="30,0,0,0" HorizontalAlignment="Left" Click="UploadButton_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Border Background="White" BorderBrush="#D9D9D9" BorderThickness="3" CornerRadius="25" Padding="10,0,0,0">
@@ -72,6 +72,8 @@
                     </Button.Template>
                     <ContentControl x:Name="ButtonContent" Content="Upload Image" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Button>
+
+                <Image x:Name="ItemImage" Width="392" Height="392" Stretch="Uniform" Margin="30,10,0,0" HorizontalAlignment="Left" />
 
                 <!-- Location -->
                 <Label Content="Location" FontSize="30" HorizontalAlignment="Left" Width="164" Margin="30,20,0,0"/>

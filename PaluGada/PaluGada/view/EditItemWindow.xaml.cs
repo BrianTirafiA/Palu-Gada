@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using Newtonsoft.Json.Linq;
 using Npgsql;
 using PaluGada.model;
+using Azure.Storage.Blobs; // Tambahkan namespace untuk Azure Blob Storage
+using System.Configuration;
 
 namespace PaluGada.view
 {
@@ -21,7 +23,8 @@ namespace PaluGada.view
         private PointLatLng currentPosition;
         private GMapMarker currentMarker;
         private int ItemId;
-        private string ImagePath; // Tidak digunakan sementara
+        private string OldImagePath; // Path gambar lama di Azure Blob Storage
+        private string NewImagePath; // Path gambar baru setelah upload
 
         public EditItemWindow(int itemId)
         {
@@ -63,7 +66,7 @@ namespace PaluGada.view
                 conn.Open();
 
                 string query = @"
-                    SELECT name, description, latitude, longitude
+                    SELECT name, description, latitude, longitude, image_path
                     FROM item
                     WHERE item_id = @ItemId";
 
@@ -77,32 +80,77 @@ namespace PaluGada.view
                             box_ItemName.Text = reader.GetString(0);
                             box_Description.Text = reader.GetString(1);
                             currentPosition = new PointLatLng(reader.GetDouble(2), reader.GetDouble(3));
+                            OldImagePath = reader.GetString(4); // Path gambar lama
 
                             box_Location.Text = $"{currentPosition.Lat}, {currentPosition.Lng}";
                             currentMarker.Position = currentPosition;
                             mapControl.Position = currentPosition;
+
+                            // Tampilkan gambar lama
+                            if (!string.IsNullOrEmpty(OldImagePath))
+                            {
+                                ItemImage.Source = new BitmapImage(new Uri(OldImagePath));
+                            }
                         }
                     }
                 }
             }
         }
 
-        private async void box_Location_KeyDown(object sender, KeyEventArgs e)
+        private void UploadButton_Click(object sender, RoutedEventArgs e)
         {
-            if (e.Key == Key.Enter)
-            {
-                string location = box_Location.Text.Trim();
-                var coordinates = await GetCoordinatesFromNominatim(location);
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
 
-                if (coordinates.HasValue)
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string sourceFilePath = openFileDialog.FileName;
+
+                // Connection string Azure Blob Storage
+                string blobConnectionString = ConfigurationManager.ConnectionStrings["AzureBlobStorage"].ConnectionString;
+                string containerName = "imageuserpg";
+
+                try
                 {
-                    currentPosition = coordinates.Value;
-                    currentMarker.Position = currentPosition;
-                    mapControl.Position = currentPosition;
+                    // Hapus gambar lama dari Azure Blob Storage (jika ada)
+                    if (!string.IsNullOrEmpty(OldImagePath))
+                    {
+                        BlobServiceClient blobServiceClient = new BlobServiceClient(blobConnectionString);
+                        BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
+                        string oldBlobName = Path.GetFileName(new Uri(OldImagePath).LocalPath);
+                        containerClient.DeleteBlobIfExists(oldBlobName);
+                    }
+
+                    // Upload gambar baru ke Azure Blob Storage
+                    string newBlobName = Guid.NewGuid().ToString() + Path.GetExtension(sourceFilePath);
+                    BlobServiceClient newBlobServiceClient = new BlobServiceClient(blobConnectionString);
+                    BlobContainerClient newContainerClient = newBlobServiceClient.GetBlobContainerClient(containerName);
+                    BlobClient blobClient = newContainerClient.GetBlobClient(newBlobName);
+
+                    using (FileStream uploadFileStream = File.OpenRead(sourceFilePath))
+                    {
+                        blobClient.Upload(uploadFileStream, true);
+                    }
+
+                    // Simpan path gambar baru
+                    NewImagePath = blobClient.Uri.ToString();
+
+                    // Preview gambar baru di elemen Image
+                    ItemImage.Source = new BitmapImage(new Uri(NewImagePath));
+
+                    // Preview gambar di tombol UploadButton
+                    BitmapImage buttonImage = new BitmapImage(new Uri(NewImagePath));
+                    Image buttonPreview = new Image
+                    {
+                        Source = buttonImage,
+                        Stretch = Stretch.UniformToFill
+                    };
+
+                    UploadButton.Content = buttonPreview; // Ubah konten tombol menjadi gambar
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Location not found.");
+                    MessageBox.Show($"Error uploading image: {ex.Message}");
                 }
             }
         }
@@ -135,6 +183,62 @@ namespace PaluGada.view
             return null;
         }
 
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (var conn = new NpgsqlConnection(Session.ConnectionString))
+                {
+                    conn.Open();
+
+                    string query = @"
+                        UPDATE item
+                        SET name = @Name, description = @Description, latitude = @Latitude, longitude = @Longitude, image_path = @ImagePath
+                        WHERE item_id = @ItemId";
+
+                    using (var cmd = new NpgsqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Name", box_ItemName.Text);
+                        cmd.Parameters.AddWithValue("@Description", box_Description.Text);
+                        cmd.Parameters.AddWithValue("@Latitude", currentPosition.Lat);
+                        cmd.Parameters.AddWithValue("@Longitude", currentPosition.Lng);
+                        cmd.Parameters.AddWithValue("@ImagePath", NewImagePath ?? OldImagePath); // Gunakan path gambar baru jika ada, atau tetap gunakan yang lama
+                        cmd.Parameters.AddWithValue("@ItemId", ItemId);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Item updated successfully!");
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
+
+        private async void box_Location_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                string location = box_Location.Text.Trim();
+                var coordinates = await GetCoordinatesFromNominatim(location);
+
+                if (coordinates.HasValue)
+                {
+                    currentPosition = coordinates.Value;
+                    currentMarker.Position = currentPosition;
+                    mapControl.Position = currentPosition;
+                }
+                else
+                {
+                    MessageBox.Show("Location not found.");
+                }
+            }
+        }
+
         private void mapControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var point = e.GetPosition(mapControl);
@@ -162,38 +266,6 @@ namespace PaluGada.view
             }
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                using (var conn = new NpgsqlConnection(Session.ConnectionString))
-                {
-                    conn.Open();
 
-                    string query = @"
-                        UPDATE item
-                        SET name = @Name, description = @Description, latitude = @Latitude, longitude = @Longitude
-                        WHERE item_id = @ItemId";
-
-                    using (var cmd = new NpgsqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@Name", box_ItemName.Text);
-                        cmd.Parameters.AddWithValue("@Description", box_Description.Text);
-                        cmd.Parameters.AddWithValue("@Latitude", currentPosition.Lat);
-                        cmd.Parameters.AddWithValue("@Longitude", currentPosition.Lng);
-                        cmd.Parameters.AddWithValue("@ItemId", ItemId);
-
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-
-                MessageBox.Show("Item updated successfully!");
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}");
-            }
-        }
     }
 }

@@ -149,7 +149,7 @@ namespace PaluGada.view {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/PaluGada;component/view/signup.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PaluGada;V1.0.0.0;component/view/signup.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\view\SignUp.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

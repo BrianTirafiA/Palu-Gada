@@ -69,7 +69,7 @@ namespace PaluGada.view {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/PaluGada;component/view/mainmenu.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PaluGada;V1.0.0.0;component/view/mainmenu.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\view\MainMenu.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
