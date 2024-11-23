@@ -10,62 +10,80 @@
       Title="Wishlist Page"
       Height="1080" Width="1414">
 
-    <!-- DataContext setup for WishlistViewModel -->
-    <!--<Page.DataContext>
-        <local1:WishlistViewModel/>
-    </Page.DataContext>-->
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="RoundedButtonStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="Padding" Value="10,5"/>
+        </Style>
+    </Page.Resources>
 
     <StackPanel Background="White">
-        <!-- Search Bar -->
-        <Border Background="LightGray" Height="50" CornerRadius="25" Margin="10">
-            <Grid>
-                <!-- Placeholder functionality -->
-                <TextBox x:Name="SearchBox" 
-                         VerticalAlignment="Center" 
-                         Background="Transparent" 
-                         BorderThickness="0" 
-                         Margin="15,0,50,0" 
-                         FontSize="16" 
-                         Foreground="Gray" 
-                         Text="Search item"
-                         GotFocus="SearchBox_GotFocus"
-                         LostFocus="SearchBox_LostFocus"/>
-                <Image Source="/assets/search.png" 
-                       Width="24" Height="24" 
-                       HorizontalAlignment="Right" 
-                       VerticalAlignment="Center" 
-                       Margin="0,0,15,0"/>
-            </Grid>
+        <Border>
+            <Label Content="Wishlist" FontSize="50" FontWeight="Bold" FontFamily="Montserrat" Margin="10" HorizontalAlignment="Center"/>
+            <Border.Effect>
+                <DropShadowEffect Color="Black" BlurRadius="40" ShadowDepth="2" Opacity="0.5"/>
+            </Border.Effect>
         </Border>
-
-        <!-- Items List -->
+            <!-- Items List -->
         <ItemsControl ItemsSource="{Binding ItemListWishlist}" Margin="10">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Border Background="LightGray" CornerRadius="10" Height="150"  Margin="0,5">
-                        <StackPanel Orientation="Horizontal" Margin="10">
-                            
-                            <!-- Item Image -->
-                            <Image Source="{Binding ImagePath}" Width="60" Height="60" Margin="5"/>
 
-                            <!-- Item Details -->
-                            <StackPanel Margin="10,0,0,0">
-                                <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="Bold" Foreground="Black"/>
-                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" MaxWidth="200" Foreground="Black" Margin="0,5,0,0"/>
-                            </StackPanel>
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="{Binding ImagePath}"/>
 
-                            <!-- Action Buttons -->
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="10,0,0,0">
-                                <Button Content="Remove" 
-                                        Background="Red" 
+                            <Grid Grid.Column="1" Margin="10,0,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="1.5*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="{Binding Title}" FontSize="40" FontFamily="Montserrat" FontWeight="Bold" Foreground="Black"/>
+                                <TextBlock Grid.Row="1" Text="{Binding Description}" FontSize="30" FontFamily="Montserrat" TextWrapping="Wrap" Foreground="Black"/>
+                            </Grid>
+
+                            <Grid Grid.Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Button Content="See Detail" 
+                                        Grid.Row="0"
+                                        Background="Teal" 
+                                        Style="{StaticResource RoundedButtonStyle}"
                                         Foreground="White" 
-                                        Margin="0,0,0,5" 
-                                        Width="80" 
+                                        FontWeight="Bold"
+                                        Tag="{Binding ItemId}"
+                                        Click="ShowDetails_Click"/>
+                                <Button Content="Remove" 
+                                        Grid.Row="1"
+                                        Background="Red" 
+                                        Style="{StaticResource RoundedButtonStyle}"
+                                        Foreground="White" 
                                         FontWeight="Bold"
                                         Tag="{Binding ItemId}"
                                         Click="RemoveButton_Click"/>
-                            </StackPanel>
-                        </StackPanel>
+                            </Grid>
+                        </Grid>
                     </Border>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

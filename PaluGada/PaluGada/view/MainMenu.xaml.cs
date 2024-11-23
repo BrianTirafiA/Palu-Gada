@@ -24,12 +24,12 @@ namespace PaluGada.view
         public MainMenu()
         {
             InitializeComponent();
-            NavigateToPage(new Home()); // Set halaman default
+            NavigateToPageMenu(new Home()); // Set halaman default
             SetActiveButton(HomeButton);
         }
 
 
-        private void NavigateToPage(Page page)
+        public void NavigateToPageMenu(Page page)
         {
             MainMenuFrame.Navigate(page);
 
@@ -49,31 +49,31 @@ namespace PaluGada.view
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigateToPage(new Home());
+            NavigateToPageMenu(new Home());
             SetActiveButton(sender as Button);
         }
 
         private void AddPostButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigateToPage(new AddPost());
+            NavigateToPageMenu(new AddPost());
             SetActiveButton(sender as Button);
         }
 
         private void MyItemButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigateToPage(new MyItem());
+            NavigateToPageMenu(new MyItem());
             SetActiveButton(sender as Button);
         }
 
         private void WishlistButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigateToPage(new WishlistPage());
+            NavigateToPageMenu(new WishlistPage());
             SetActiveButton(sender as Button);
         }
 
         private void ChatButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigateToPage(new Chat());
+            NavigateToPageMenu(new Chat());
             SetActiveButton(sender as Button);
         }
     }

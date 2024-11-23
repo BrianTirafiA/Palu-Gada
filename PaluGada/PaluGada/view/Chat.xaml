@@ -8,25 +8,39 @@
       Background="White"
       Title="mainmenu" Height="1080" Width="1414">
     <Grid>
-        <StackPanel Orientation="Vertical">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Vertical">
             <!-- Header -->
-            <TextBlock Text="Chatrooms" FontSize="24" FontWeight="Bold" Margin="10"/>
+            <Border>
+                <Label Content="ChatRoom" FontSize="50" FontWeight="Bold" FontFamily="Montserrat" HorizontalAlignment="Left"/>
+                <Border.Effect>
+                    <DropShadowEffect Color="Black" BlurRadius="40" ShadowDepth="2" Opacity="0.5"/>
+                </Border.Effect>
+            </Border>
 
             <!-- List of Chatrooms -->
-            <ListBox x:Name="ChatroomList" SelectionChanged="ChatroomList_SelectionChanged" Margin="10">
+            <ListBox x:Name="ChatroomList" SelectionChanged="ChatroomList_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="10" Padding="10" Margin="5">
+                        <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="10" Padding="10" Margin="5" Width="300">
                             <StackPanel Orientation="Horizontal">
                                 <!-- Chatroom Partner -->
-                                <TextBlock Text="{Binding PartnerName}" FontSize="16" VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding PartnerName}" FontSize="16" FontFamily="Montserrat" VerticalAlignment="Center" />
                                 <!-- Last Message Preview -->
-                                <TextBlock Text="{Binding LastMessage}" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Gray"/>
+                                <TextBlock Text="{Binding LastMessage}" FontSize="14" FontFamily="Montserrat" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Gray"/>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
+        <Border Grid.Column="1" BorderThickness="1" BorderBrush="Gray">
+            <Viewbox>
+                <Frame x:Name="ChatFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
+            </Viewbox>
+        </Border>
     </Grid>
 </Page>

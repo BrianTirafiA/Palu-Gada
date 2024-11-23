@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\UGM\Kuliah\SEMESTER 5\JUNIOR PROJECT\projek4\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\
+D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\
 PaluGada
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-D:\UGM\Kuliah\SEMESTER 5\JUNIOR PROJECT\projek4\Palu-Gada\PaluGada\PaluGada\App.xaml
+D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\App.xaml
 131656749141
 
 27-505248116
-23378857584
+233-1454180654
 MainWindow.xaml;view\AddPost.xaml;view\Chat.xaml;view\ChatRoomPage.xaml;view\ConfirmEmail.xaml;view\DetailWindow.xaml;view\EditItemWindow.xaml;view\Home.xaml;view\Login.xaml;view\MainMenu.xaml;view\MyItem.xaml;view\SignUp.xaml;view\WishlistPage.xaml;
 
 True

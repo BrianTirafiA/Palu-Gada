@@ -58,6 +58,7 @@ namespace PaluGada.view
 
                 // Navigasi ke MainMenu
                 MainMenu mainMenu = new MainMenu();
+                Application.Current.MainWindow = mainMenu;
                 mainMenu.Show();
 
                 // Tutup jendela login

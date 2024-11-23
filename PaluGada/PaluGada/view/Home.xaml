@@ -16,7 +16,12 @@
 
         <!-- Header -->
         <Viewbox HorizontalAlignment="Center" Grid.Row="0">
-            <Label Content="Home" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" />
+            <Border>
+                <Label Content="Home" FontSize="50" FontWeight="Bold" FontFamily="Montserrat" HorizontalAlignment="Center"/>
+                <Border.Effect>
+                    <DropShadowEffect Color="Black" BlurRadius="40" ShadowDepth="2" Opacity="0.5"/>
+                </Border.Effect>
+            </Border>
         </Viewbox>
 
         <!-- Map -->

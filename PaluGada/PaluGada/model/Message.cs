@@ -10,6 +10,13 @@ namespace PaluGada.model
     {
         public int UserId { get; set; }
         public string Content { get; set; }
+        public string TimestampWithOffset
+        {
+            get
+            {
+                return Timestamp.AddHours(7).ToString("HH:mm");
+            }
+        }
         public DateTime Timestamp { get; set; }
         public bool IsUserMessage { get; set; }
     }

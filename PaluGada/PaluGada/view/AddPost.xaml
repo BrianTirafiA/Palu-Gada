@@ -16,11 +16,17 @@
         <!-- ScrollViewer untuk mengaktifkan scrolling pada konten halaman -->
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel Grid.Column="1" HorizontalAlignment="Center" Width="1414" >
-                <Label Content="Add Post" FontSize="50" FontFamily="Poppins" Width="211"/>
+                <Border>
+                    <Label Content="Add Post" FontSize="50" FontWeight="Bold" FontFamily="Montserrat" Margin="10" HorizontalAlignment="Center"/>
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="40" ShadowDepth="2" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+                
 
                 <!-- Text Box Item Name -->
-                <Label Content="Item Name" FontSize="30" HorizontalAlignment="Left" Width="154" Margin="30,0,0,0"/>
-                <TextBox Width="1318" Height="87" Margin="30,0,0,0" x:Name="box_ItemName" HorizontalAlignment="Left" FontSize="20">
+                <Label Content="Item Name" FontFamily="Montserrat" FontSize="30" HorizontalAlignment="Left" Margin="30,0,0,0"/>
+                <TextBox Width="1318" FontFamily="Montserrat" Height="87" Margin="30,0,0,0" x:Name="box_ItemName" HorizontalAlignment="Left" FontSize="20">
                     <TextBox.Style>
                         <Style TargetType="TextBox">
                             <Setter Property="Template">
@@ -40,8 +46,8 @@
                 </TextBox>
 
                 <!-- Text Box Description -->
-                <Label Content="Description" FontSize="30" HorizontalAlignment="Left" Width="164" Margin="30,20,0,0"/>
-                <TextBox Width="1318" Height="203" Margin="30,0,0,0" x:Name="box_Description" HorizontalAlignment="Left"
+                <Label Content="Description" FontFamily="Montserrat" FontSize="30" HorizontalAlignment="Left" Margin="30,20,0,0"/>
+                <TextBox Width="1318" Height="203" FontFamily="Montserrat" Margin="30,0,0,0" x:Name="box_Description" HorizontalAlignment="Left"
                     AcceptsReturn="True" VerticalScrollBarVisibility="Auto" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Top">
                     <TextBox.Style>
                         <Style TargetType="TextBox">
@@ -62,7 +68,7 @@
                 </TextBox>
 
                 <!-- Upload Photo Item -->
-                <Label Content="Photo" FontSize="30" HorizontalAlignment="Left" Width="164" Margin="30,20,0,0"/>
+                <Label Content="Photo" FontFamily="Montserrat" FontSize="30" HorizontalAlignment="Left" Margin="30,20,0,0"/>
                 <Button x:Name="UploadButton" Width="392" Height="149" Margin="30,0,0,0" HorizontalAlignment="Left" Click="UploadButton_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
@@ -78,8 +84,8 @@
                 </Button>
 
                 <!-- Location TextBox and Map -->
-                <Label Content="Location" FontSize="30" HorizontalAlignment="Left" Width="164" Margin="30,20,0,0"/>
-                <TextBox x:Name="box_Location" Width="722" Height="50" Margin="30,0,0,0" HorizontalAlignment="Left" FontSize="20"
+                <Label Content="Location" FontSize="30" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="30,20,0,0"/>
+                <TextBox x:Name="box_Location" Width="722" Height="50" FontFamily="Montserrat" Margin="30,0,0,0" HorizontalAlignment="Left" FontSize="20"
                          KeyDown="box_Location_KeyDown">
                     <TextBox.Style>
                         <Style TargetType="TextBox">

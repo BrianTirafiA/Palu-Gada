@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GMap.NET.MapProviders;
 using Microsoft.AspNetCore.SignalR.Client;
 using Npgsql;
 using PaluGada.model;
@@ -30,6 +32,21 @@ namespace PaluGada.view
         {
             InitializeComponent();
             LoadChatrooms();
+        }
+        private int? _initialChatroomId;
+
+        public Chat(int? initialChatroomId = null)
+        {
+            InitializeComponent();
+            LoadChatrooms();
+            _initialChatroomId = initialChatroomId;
+            int idroom = _initialChatroomId.GetValueOrDefault();
+            ChatFrame.Navigate(new ChatRoomPage(idroom));
+        }
+
+        private void NavigateToPage(Page page)
+        {
+            ChatFrame.Navigate(page);
         }
 
         private void LoadChatrooms()
@@ -84,9 +101,8 @@ namespace PaluGada.view
         {
             if (ChatroomList.SelectedItem is Chatroom selectedChatroom)
             {
-                // Buka ChatRoomPage sebagai Window
-                var chatRoomWindow = new ChatRoomPage(selectedChatroom.ChatroomId);
-                chatRoomWindow.Show();
+                // Navigate to ChatRoomPage with the selected ChatroomId
+                ChatFrame.Navigate(new ChatRoomPage(selectedChatroom.ChatroomId));
             }
         }
     }

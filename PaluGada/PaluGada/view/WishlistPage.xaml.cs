@@ -139,5 +139,22 @@ namespace PaluGada.view
             // Hentikan Timer saat halaman dihancurkan
             RefreshTimer?.Stop();
         }
+
+        private void ShowDetails_Click(object sender, RoutedEventArgs e)
+        {
+            // Cast sender to Button
+            var button = sender as Button;
+            if (button == null) return;
+
+            // Retrieve the Item object from DataContext
+            var item = button.DataContext as Item;
+            if (item == null) return;
+
+            // Open the detail window with item details
+            var detailWindow = new DetailWindow(item.Title, item.Description, item.ImagePath, item.ItemId);
+            detailWindow.Show();
+        }
+
+
     }
 }

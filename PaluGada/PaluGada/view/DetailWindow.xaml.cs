@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using GMap.NET.MapProviders;
+using Npgsql;
 using PaluGada.model;
 using System;
 using System.Windows;
@@ -120,8 +121,11 @@ namespace PaluGada.view
             try
             {
                 int chatroomId = GetOrCreateChatroom(Session.UserId, SellerId);
-                var chatRoomPage = new ChatRoomPage(chatroomId);
-                chatRoomPage.Show();
+                var mainWindow = Application.Current.MainWindow as MainMenu;
+                if (mainWindow != null)
+                {
+                    mainWindow.NavigateToPageMenu(new Chat(chatroomId));
+                }
                 this.Close();
             }
             catch (Exception ex)

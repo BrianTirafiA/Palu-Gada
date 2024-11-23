@@ -8,7 +8,7 @@ using PaluGada.model;
 
 namespace PaluGada.view
 {
-    public partial class ChatRoomPage : Window
+    public partial class ChatRoomPage : Page
     {
         private int ChatroomId;
         public ObservableCollection<Message> Messages { get; set; }

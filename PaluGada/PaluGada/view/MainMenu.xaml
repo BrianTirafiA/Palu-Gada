@@ -16,6 +16,7 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Height" Value="111"/>
             <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
             <Style.Triggers>
                 <!-- Trigger untuk warna tombol aktif -->
                 <DataTrigger Binding="{Binding IsActive}" Value="True">
@@ -36,7 +37,7 @@
         <Border Grid.Column="0" Background="#BEEBAD">
             <Viewbox >
                 <StackPanel>
-                    <Label Content="PALU GADA APP" HorizontalAlignment="Center" FontSize="40" Margin="0,0,0,0" FontWeight="Bold"/>
+                    <Label Content="PALU GADA APP" FontFamily="Montserrat" HorizontalAlignment="Center" FontSize="40" Margin="0,0,0,0" FontWeight="Bold"/>
                     <Button x:Name="HomeButton" Content="Home" Style="{StaticResource SidebarButtonStyle}" Click="HomeButton_Click" BorderThickness="0"/>
                     <Button Content="Add Post" Style="{StaticResource SidebarButtonStyle}" Click="AddPostButton_Click" BorderThickness="0"/>
                     <Button Content="My Item" Style="{StaticResource SidebarButtonStyle}" Click="MyItemButton_Click" BorderThickness="0"/>
