@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:PaluGada"
         mc:Ignorable="d"
         WindowState="Maximized" 
-        Title="MainWindow" Height="1080" Width="1920"
+        Title="Welcome To PaluGada" Height="1080" Width="1920"
         Background="#378C87">
+
     <Grid>
         <Frame x:Name="LoginFrame" NavigationUIVisibility="Hidden" />
     </Grid>

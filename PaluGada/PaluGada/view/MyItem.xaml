@@ -65,6 +65,7 @@
                                 </Grid.RowDefinitions>
                                     <Button Content="Remove"
                                             Grid.Row="1"
+                                            Style="{StaticResource RoundedButtonStyle}"
                                             Background="Red" 
                                             Foreground="White" 
                                             Margin="0,0,0,5" 
@@ -74,6 +75,7 @@
                                             Click="RemoveButton_Click"/>
                                     <Button Content="Edit Item" 
                                             Grid.Row="0"
+                                            Style="{StaticResource RoundedButtonStyle}"
                                             Background="Gold" 
                                             Foreground="Black" 
                                             Width="80" 

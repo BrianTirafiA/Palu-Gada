@@ -34,8 +34,8 @@
 
                 <!-- Input Area -->
                 <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10">
-                    <TextBox x:Name="MessageText" FontFamily="Montserrat" Width="400" Height="30" />
-                    <Button Content="Send" FontFamily="Montserrat" Height="30" Click="SendButton_Click" Margin="10,0,0,0" />
+                    <TextBox x:Name="MessageText" FontFamily="Montserrat" Width="900" FontSize="30" Height="45" />
+                    <Button Content="Send" FontFamily="Montserrat" Height="45" Width="120" Click="SendButton_Click" Margin="10,0,0,0" />
                 </StackPanel>
             </Grid>
         </StackPanel>

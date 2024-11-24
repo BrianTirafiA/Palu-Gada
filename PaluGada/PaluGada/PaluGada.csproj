@@ -6,10 +6,15 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Group 37.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="assets\logo_pg.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Group 37.ico" />
   </ItemGroup>
 
   <ItemGroup>

@@ -611,3 +611,5 @@ D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\refint\Palu
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\PaluGada.pdb
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\PaluGada.genruntimeconfig.cache
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\ref\PaluGada.dll
+D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\bin\Debug\net8.0-windows\PaluGada.dll.config
+D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\PaluGada_Content.g.cs
