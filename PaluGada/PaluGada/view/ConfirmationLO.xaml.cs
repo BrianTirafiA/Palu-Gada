@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,7 +21,6 @@ namespace PaluGada.view
     /// </summary>
     public partial class ConfirmationLO : Window
     {
-        MainMenu creatingForm;
         public ConfirmationLO()
         {
             InitializeComponent();
@@ -28,18 +28,18 @@ namespace PaluGada.view
 
         private void yesbtn(object sender, RoutedEventArgs e)
         {
-
-            if (creatingForm != null)
+            foreach (Window w in Application.Current.Windows)
             {
-                creatingForm.Close();
-                creatingForm = new MainMenu();
-                //How ever you are passing information to the secondWindow
+                if (w.Name != "Confirm")
+                {
+                    w.Close();
+                }
             }
-
             MainWindow login = new MainWindow();
             Application.Current.MainWindow = login;
             login.Show();
             this.Close();
+            
 
         }
 
