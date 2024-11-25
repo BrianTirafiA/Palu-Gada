@@ -85,7 +85,7 @@ namespace PaluGada.view
 
         public void CloseMe()
         {
-            this.Close();
+            Window.GetWindow(this)?.Close();
         }
     }
 }
