@@ -91,20 +91,15 @@ namespace PaluGada.view
                     string imageUrl = blobClient.Uri.ToString();
                     UploadButton.Tag = imageUrl;
 
-                    // Mengatur preview gambar
+                    // Mengatur preview gambar di bawah tombol
                     BitmapImage bitmap = new BitmapImage();
                     bitmap.BeginInit();
                     bitmap.UriSource = new Uri(sourceFilePath, UriKind.Absolute); // Menggunakan file lokal untuk preview
                     bitmap.CacheOption = BitmapCacheOption.OnLoad; // Mencegah file terkunci setelah preview
                     bitmap.EndInit();
 
-                    Image imagePreview = new Image
-                    {
-                        Source = bitmap,
-                        Stretch = Stretch.UniformToFill
-                    };
-
-                    UploadButton.Content = imagePreview;
+                    // Set preview di bawah tombol
+                    PreviewImage.Source = bitmap;
 
                     MessageBox.Show("Gambar berhasil diunggah dan preview ditampilkan.", "Sukses", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -114,6 +109,7 @@ namespace PaluGada.view
                 }
             }
         }
+
 
 
 

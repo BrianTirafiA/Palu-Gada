@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:PaluGada.view"
         mc:Ignorable="d"
         Background="#FFF1DB"
-        Title="Confirmation to Log Out" Height="300" Width="600">
+        Title="Confirmation to Log Out" Height="300" Width="600"
+        x:Name="Confirm">
     <Window.Resources>
         <Style TargetType="Button" x:Key="RoundedButtonStyle">
             <Setter Property="Template">

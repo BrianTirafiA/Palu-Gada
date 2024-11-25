@@ -23,6 +23,7 @@ namespace PaluGada.view
         public Account()
         {
             InitializeComponent();
+            this.DataContext = new AccountViewModel();
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
@@ -31,13 +32,5 @@ namespace PaluGada.view
             Application.Current.MainWindow = confirmation;
             confirmation.Show();
         }
-
-        private void EditAcc_Click(object sender, RoutedEventArgs e)
-        {
-            EditAcc edit = new EditAcc();
-            Application.Current.MainWindow = edit;
-            edit.Show();
-        }
-
     }
 }

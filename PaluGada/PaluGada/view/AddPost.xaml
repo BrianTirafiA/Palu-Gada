@@ -83,6 +83,9 @@
                     <ContentControl x:Name="ButtonContent" Content="Upload Image" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Button>
 
+                <Image x:Name="PreviewImage" Width="392" Height="392" Stretch="UniformToFill" Margin="30,10,0,0" HorizontalAlignment="Left" />
+
+
                 <!-- Location TextBox and Map -->
                 <Label Content="Location" FontSize="30" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="30,20,0,0"/>
                 <TextBox x:Name="box_Location" Width="722" Height="50" FontFamily="Montserrat" Margin="30,0,0,0" HorizontalAlignment="Left" FontSize="20"

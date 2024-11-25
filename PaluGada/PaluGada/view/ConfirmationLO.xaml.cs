@@ -28,20 +28,28 @@ namespace PaluGada.view
 
         private void yesbtn(object sender, RoutedEventArgs e)
         {
+            // Reset session data to log out the current user
+            Session.ResetSession();
 
-            if (creatingForm != null)
+            foreach (Window w in Application.Current.Windows)
             {
-                creatingForm.Close();
-                creatingForm = new MainMenu();
-                //How ever you are passing information to the secondWindow
+                // Check if creatingForm exists and close it
+                if (creatingForm != null)
+                {
+                    creatingForm.Close();
+                    creatingForm = new MainMenu();
+                }
             }
 
+            // Navigate to MainWindow (Login screen)
             MainWindow login = new MainWindow();
             Application.Current.MainWindow = login;
             login.Show();
-            this.Close();
 
+            // Close the current confirmation window
+            this.Close();
         }
+
 
         private void nobtn(object sender, RoutedEventArgs e)
         {
