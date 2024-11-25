@@ -43,6 +43,7 @@
                     <Button Content="My Item" Style="{StaticResource SidebarButtonStyle}" Click="MyItemButton_Click" BorderThickness="0"/>
                     <Button Content="Wishlist" Style="{StaticResource SidebarButtonStyle}" Click="WishlistButton_Click" BorderThickness="0"/>
                     <Button Content="Chat" Style="{StaticResource SidebarButtonStyle}" Click="ChatButton_Click" BorderThickness="0"/>
+                    <Button Content="Account" Style="{StaticResource SidebarButtonStyle}" Click="AccountButton_Click" BorderThickness="0"/>
                 </StackPanel>
             </Viewbox>
         </Border>

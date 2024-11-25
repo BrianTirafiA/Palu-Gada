@@ -3,7 +3,6 @@ FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\App.xaml;;
 FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\MainWindow.xaml;;
 FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\view\AddPost.xaml;;
 FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\view\Chat.xaml;;
-FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\view\ConfirmEmail.xaml;;
 FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\view\EditItemWindow.xaml;;
 FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\view\Home.xaml;;
 FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\view\Login.xaml;;
@@ -11,4 +10,7 @@ FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\view\MainMenu.xaml;;
 FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\view\MyItem.xaml;;
 FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\view\SignUp.xaml;;
 FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\view\WishlistPage.xaml;;
+FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\view\Account.xaml;;
+FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\view\ConfirmationLO.xaml;;
+FD:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\view\EditAcc.xaml;;
 

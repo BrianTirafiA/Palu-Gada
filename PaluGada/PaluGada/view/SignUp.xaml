@@ -97,7 +97,7 @@
                             <Label x:Name="lbl_Pass" Grid.Row="6" Content="Password" FontSize="30" FontWeight="Bold" FontFamily="Montserrat" Foreground="#000000" Margin="25,15,0,0"/>
                             <PasswordBox x:Name="box_Password" Style="{StaticResource RoundedPassBoxStyle}" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" FontFamily="Montserrat" FontSize="50" Foreground="Gray"  Margin="15,0,15,15"/>
                             <Button x:Name="btn_SignUp" Content="Sign Up" FontFamily="Montserrat" FontSize="30" FontWeight="Bold" Foreground="#FFFFFF" Background="#88C273" Grid.Row="8" Style="{StaticResource RoundedButtonStyle}" Width="200" Height="60" Margin="10" Click="SignUpButton_Click"/>
-                            <Label x:Name="lbl_Back" Grid.Row="9" Content="Create an Account" FontSize="20" FontWeight="Bold" FontFamily="Montserrat" Foreground="#000000" HorizontalAlignment="Center" MouseDown="lbl_Clickable_Login"/>
+                            <Label x:Name="lbl_Back" Grid.Row="9" Content="Already Have an Account?" FontSize="20" FontWeight="Bold" FontFamily="Montserrat" Foreground="#000000" HorizontalAlignment="Center" MouseDown="lbl_Clickable_Login"/>
                         </Grid>
                     </Border>
                 </Viewbox>

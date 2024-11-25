@@ -68,7 +68,7 @@ namespace PaluGada.view {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/PaluGada;V1.0.0.0;component/view/chatroompage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PaluGada;component/view/chatroompage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\view\ChatRoomPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -31,7 +31,6 @@ namespace PaluGada.view
 
         private void lbl_Clickable_SignUp(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Label clicked!");
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.LoginFrame.Navigate(new SignUp());
         }

@@ -574,7 +574,6 @@ D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\MainWindow.
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\AddPost.g.cs
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\Chat.g.cs
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\ChatRoomPage.g.cs
-D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\ConfirmEmail.g.cs
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\DetailWindow.g.cs
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\EditItemWindow.g.cs
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\Home.g.cs
@@ -591,7 +590,6 @@ D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\App.baml
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\MainWindow.baml
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\AddPost.baml
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\Chat.baml
-D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\ConfirmEmail.baml
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\EditItemWindow.baml
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\Home.baml
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\Login.baml
@@ -613,3 +611,9 @@ D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\PaluGada.ge
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\ref\PaluGada.dll
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\bin\Debug\net8.0-windows\PaluGada.dll.config
 D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\PaluGada_Content.g.cs
+D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\Account.g.cs
+D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\ConfirmationLO.g.cs
+D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\EditAcc.g.cs
+D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\Account.baml
+D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\ConfirmationLO.baml
+D:\PalGad\Final\Palu-Gada\PaluGada\PaluGada\obj\Debug\net8.0-windows\view\EditAcc.baml

@@ -76,5 +76,16 @@ namespace PaluGada.view
             NavigateToPageMenu(new Chat());
             SetActiveButton(sender as Button);
         }
+
+        private void AccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateToPageMenu(new Account());
+            SetActiveButton(sender as Button);
+        }
+
+        public void CloseMe()
+        {
+            this.Close();
+        }
     }
 }
